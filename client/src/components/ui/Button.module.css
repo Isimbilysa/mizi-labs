@@ -1,0 +1,83 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-base) var(--ease-out-soft),
+    border-color var(--duration-base) var(--ease-out-soft),
+    color var(--duration-base) var(--ease-out-soft),
+    transform var(--duration-base) var(--ease-out-expo);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.sm {
+  padding: 0.65rem 1.15rem;
+  font-size: var(--text-xs);
+}
+
+.primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+}
+
+.primary:hover {
+  background-color: var(--btn-primary-bg-hover);
+}
+
+.ghost {
+  border-color: var(--btn-ghost-border);
+  color: var(--btn-ghost-fg);
+}
+
+.ghost:hover {
+  background-color: var(--btn-ghost-bg-hover);
+  border-color: var(--color-border-strong);
+}
+
+.quiet {
+  padding-inline: 0;
+  color: var(--color-heading);
+  border-radius: 0;
+}
+
+.quiet .label {
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--color-border-strong);
+  transition: border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.quiet:hover .label {
+  border-color: var(--color-gold);
+}
+
+.trailing {
+  display: inline-flex;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+
+.button:hover .trailing {
+  transform: translateX(4px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}

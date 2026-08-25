@@ -1,0 +1,26 @@
+{
+  "name": "mizi-labs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MIZI Labs — Intelligence for Africa's food future. Marketing site (React) + API (Node/Express).",
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,client -c green,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm run dev --workspace client",
+    "dev:server": "npm run dev --workspace server",
+    "build": "npm run build --workspace client",
+    "preview": "npm run preview --workspace client",
+    "start": "npm run start --workspace server",
+    "lint": "npm run lint --workspace client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,102 @@
+.section {
+  border-top: 1px solid var(--color-border);
+}
+
+.container {
+  position: relative;
+}
+
+.body {
+  max-width: 66ch;
+  margin-top: var(--space-6);
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Horizons ------------------------------------------------------------- */
+
+.horizons {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-9);
+}
+
+.horizon {
+  position: relative;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.horizon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  transition:
+    background-color var(--duration-base) var(--ease-out-soft),
+    border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.horizon:hover::before {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.period {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.horizonTitle {
+  margin-top: var(--space-3);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+.horizonBody {
+  margin-top: var(--space-2);
+  max-width: 42ch;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Closing statement ---------------------------------------------------- */
+
+.statementWrap {
+  margin-top: var(--space-9);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.statement {
+  max-width: 22ch;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: var(--display-sm);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+@media (min-width: 860px) {
+  .horizons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .statement {
+    max-width: 26ch;
+    font-size: var(--display-md);
+  }
+}

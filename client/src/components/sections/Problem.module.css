@@ -1,0 +1,114 @@
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  max-width: 68ch;
+}
+
+/* A register of pressures — hairline rules read as instrument readings. */
+.grid {
+  display: grid;
+  gap: 1px;
+  margin-top: var(--space-9);
+  background-color: var(--color-border);
+  border-block: 1px solid var(--color-border);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-5);
+  background-color: var(--color-bg);
+  transition: background-color var(--duration-base) var(--ease-out-soft);
+}
+
+.item:hover {
+  background-color: var(--color-bg-raised);
+}
+
+.index {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+}
+
+.itemTitle {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.itemBody {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Closing statement ---------------------------------------------------- */
+
+.closing {
+  margin-top: var(--space-9);
+}
+
+.quote {
+  max-width: 26ch;
+  margin: 0;
+  padding-left: clamp(1rem, 3vw, 2rem);
+  border-left: 2px solid var(--color-gold);
+}
+
+.quoteLine,
+.quoteAccent {
+  font-family: var(--font-display);
+  font-size: var(--display-xs);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  text-wrap: balance;
+}
+
+.quoteLine {
+  color: var(--color-muted);
+}
+
+.quoteAccent {
+  color: var(--color-heading);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quote {
+    max-width: 34ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item {
+    padding: var(--space-7) var(--space-6);
+  }
+
+  .closing {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .quote {
+    max-width: 40ch;
+  }
+
+  .quoteLine,
+  .quoteAccent {
+    font-size: var(--display-sm);
+  }
+}

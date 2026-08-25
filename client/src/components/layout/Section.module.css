@@ -1,0 +1,11 @@
+.section {
+  position: relative;
+  padding-block: var(--section-py);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  isolation: isolate;
+}
+
+.bleed {
+  padding-block: 0;
+}
