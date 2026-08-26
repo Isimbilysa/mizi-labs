@@ -1,114 +1,84 @@
-.container {
-  position: relative;
-  z-index: 1;
+.section {
+  border-top: 1px solid var(--color-border);
 }
 
-.heading {
-  max-width: 68ch;
-}
-
-/* A register of pressures — hairline rules read as instrument readings. */
-.grid {
+.body {
   display: grid;
-  gap: 1px;
+  gap: var(--space-9);
   margin-top: var(--space-9);
-  background-color: var(--color-border);
-  border-block: 1px solid var(--color-border);
+  align-items: center;
 }
 
-.item {
+.copy {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-6) var(--space-5);
-  background-color: var(--color-bg);
-  transition: background-color var(--duration-base) var(--ease-out-soft);
+  align-items: flex-start;
+  gap: var(--space-4);
 }
 
-.item:hover {
-  background-color: var(--color-bg-raised);
+.emphasis {
+  max-width: 24ch;
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--display-xs);
+  line-height: 1.14;
 }
 
-.index {
-  color: var(--color-gold);
+.listLabel {
+  margin-top: var(--space-4);
+  color: var(--color-subtle);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
-  letter-spacing: var(--tracking-widest);
-}
-
-.itemTitle {
-  font-size: var(--text-lg);
-  font-weight: 600;
-  letter-spacing: var(--tracking-snug);
-}
-
-.itemBody {
-  color: var(--color-muted);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-}
-
-/* --- Closing statement ---------------------------------------------------- */
-
-.closing {
-  margin-top: var(--space-9);
-}
-
-.quote {
-  max-width: 26ch;
-  margin: 0;
-  padding-left: clamp(1rem, 3vw, 2rem);
-  border-left: 2px solid var(--color-gold);
-}
-
-.quoteLine,
-.quoteAccent {
-  font-family: var(--font-display);
-  font-size: var(--display-xs);
   font-weight: 500;
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-snug);
-  text-wrap: balance;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
 }
 
-.quoteLine {
-  color: var(--color-muted);
+.questions {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid var(--color-border);
 }
 
-.quoteAccent {
-  color: var(--color-heading);
+.question {
+  position: relative;
+  padding: var(--space-3) 0 var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: var(--text-base);
 }
 
-@media (min-width: 640px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.question::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background-color: var(--color-gold);
+}
 
-  .quote {
-    max-width: 34ch;
+.visual {
+  width: 100%;
+}
+
+@media (min-width: 620px) {
+  .questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
   }
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 1000px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
   }
 
-  .item {
-    padding: var(--space-7) var(--space-6);
-  }
-
-  .closing {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .quote {
-    max-width: 40ch;
-  }
-
-  .quoteLine,
-  .quoteAccent {
-    font-size: var(--display-sm);
+  .questions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

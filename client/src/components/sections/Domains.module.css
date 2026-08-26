@@ -1,0 +1,130 @@
+.section {
+  border-top: 1px solid var(--color-border);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-9) 0 0;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-raised);
+  overflow: hidden;
+  transition: border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.index {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+}
+
+.icon {
+  color: var(--color-accent);
+  transition: color var(--duration-base) var(--ease-out-soft);
+}
+
+.card:hover .icon {
+  color: var(--color-gold);
+}
+
+.name {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.summary {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+}
+
+.example {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.03em;
+}
+
+/* --- Signal profile ------------------------------------------------------- */
+
+.profile {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 34px;
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+.bar {
+  flex: 1;
+  height: var(--height);
+  border-radius: 1px;
+  background-color: var(--color-accent);
+  opacity: 0.22;
+  transform-origin: bottom;
+  transition:
+    opacity var(--duration-base) var(--ease-out-soft),
+    transform var(--duration-slow) var(--ease-out-expo);
+  transition-delay: calc(var(--index) * 26ms);
+}
+
+.card:hover .bar {
+  opacity: 0.6;
+  transform: scaleY(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover .bar {
+    transform: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Seven cards: the last three widen to fill the final row cleanly. */
+  .card:nth-child(5) {
+    grid-column: span 2;
+  }
+}

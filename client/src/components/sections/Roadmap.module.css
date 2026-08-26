@@ -1,0 +1,102 @@
+.section {
+  background:
+    radial-gradient(70% 50% at 50% 0%, rgba(29, 76, 58, 0.22) 0%, transparent 62%),
+    var(--ink-900);
+  border-top: 1px solid var(--color-border);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.stages {
+  display: grid;
+  gap: var(--space-7);
+  margin: var(--space-9) 0 0;
+}
+
+.stage {
+  position: relative;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.022);
+  transition: border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.stage:hover {
+  border-color: var(--color-border-strong);
+}
+
+/* Only the first stage is real work in progress; the rest read as intent. */
+.stage[data-status='building'] {
+  border-color: rgba(61, 138, 107, 0.42);
+  background-color: rgba(61, 138, 107, 0.06);
+}
+
+.stage[data-status='future'] {
+  border-style: dashed;
+  background-color: transparent;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.stage[data-status='future'] .title {
+  color: var(--color-muted);
+}
+
+.summary {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.item {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.03em;
+}
+
+.connector {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--space-7) * -1);
+  display: grid;
+  place-items: center;
+  width: var(--space-7);
+  height: var(--space-7);
+  color: var(--color-subtle);
+  transform: translateX(-50%);
+}
+
+@media (min-width: 860px) {
+  .stages {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+}

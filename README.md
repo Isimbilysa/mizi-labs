@@ -2,175 +2,173 @@
 
 > Rooted in Africa. Built for the future.
 
-The landing experience for **MIZI Labs** — an Africa-focused deep-tech research company
-working at the intersection of AI, agriculture, climate, and food systems.
+The landing page for **MIZI Labs**, a research-driven African technology initiative working on
+agricultural data, food systems, climate resilience and eventually AI.
 
-A React front end delivers the narrative and the visual system; a Node/Express API handles
-the parts a static page cannot: enquiry intake, validation, rate limiting, and storage.
+The first product is the **MIZI African Agricultural Data Map**: a catalogue of what
+agricultural data exists across Africa, where it exists, who provides it, how accessible it is,
+how useful it is, and where the gaps are. Rwanda is the initial research case study.
+
+**Starting in Rwanda. Building for Africa.**
+
+---
+
+## The credibility rule
+
+This is the constraint the whole repository is built around. MIZI Labs is at the research and
+prototype stage, and the site must never suggest otherwise.
+
+| Never claim | Always do |
+| ----------- | --------- |
+| Indexed datasets, reached farmers, solved food insecurity | State the stage plainly, in the hero and the footer |
+| Invented statistics or coverage figures | Mark every unverified value as illustrative |
+| Finished products in the roadmap | Badge each stage `Building` / `Research` / `Future` |
+| Official-looking country boundaries | Say the regions are approximations, in the UI |
+
+Two mechanisms enforce this in code rather than in good intentions:
+
+- **`Provenance`** (`src/types/index.ts`) is a required field on countries and dataset
+  records: `'illustrative' | 'in-progress' | 'verified'`. Nothing may be presented as fact
+  until its provenance actually says so.
+- **`StatusBadge`** renders the maturity of anything on the page, and the example dataset
+  panel carries its own "Example interface — data shown for illustration" label as part of
+  the component, so a caption cannot drift away from what it describes.
 
 ---
 
 ## Stack
 
-| Layer    | Choice                        | Why                                                                   |
-| -------- | ----------------------------- | --------------------------------------------------------------------- |
-| Client   | React 18 + Vite               | Fast builds, no framework ceremony for a single-page narrative.        |
-| Styling  | CSS Modules + design tokens   | Component-scoped styles, one semantic token layer, zero runtime cost.  |
-| Motion   | Canvas, SVG, CSS + hooks      | No animation library — every effect is small, deliberate, cancellable. |
-| Server   | Node 18+ / Express 4          | A small, explicit API surface with room to grow.                       |
+| Layer | Choice | Why |
+| ----- | ------ | --- |
+| Client | React 18 + Vite + **TypeScript** | Typed domain model for a data-catalogue product. |
+| Styling | CSS Modules + design tokens | Component-scoped, one semantic token layer, no runtime cost. |
+| Geometry | Hand-built projection + Voronoi | No map library and no GeoJSON download. |
+| Server | Node 18+ / Express 4 | Small, explicit API with room for catalogue endpoints. |
 
-No UI kit, no CSS framework, no icon package: the mark, the icon set, and the Africa map
-are drawn in this repository.
+Tailwind is not installed, so the existing CSS Modules setup was kept and extended. No UI kit,
+no icon package, no charting library: the mark, the ten icons and every visualisation are drawn
+in this repository.
 
 ---
 
 ## Getting started
 
 ```bash
-# 1. install (npm workspaces — installs client and server together)
-npm install
-
-# 2. configure the API
+npm install                      # workspaces: installs client and server
 cp server/.env.example server/.env
-
-# 3. run both apps
-npm run dev
+npm run dev                      # client on :5173, API on :5050
 ```
 
-| Service | URL                          |
-| ------- | ---------------------------- |
-| Client  | http://localhost:5173        |
-| API     | http://localhost:5050/api    |
-
-The Vite dev server proxies `/api` to the API, so the client never needs an absolute URL.
-
-### Scripts
-
-| Command           | Description                                     |
-| ----------------- | ----------------------------------------------- |
-| `npm run dev`     | Client and API together, with reload on both.   |
-| `npm run build`   | Production build of the client into `client/dist`. |
-| `npm run preview` | Serve the production build locally.             |
-| `npm run start`   | Run the API alone (production).                 |
-| `npm run lint`    | ESLint across the client.                       |
+| Command | Description |
+| ------- | ----------- |
+| `npm run dev` | Client and API together, with reload on both. |
+| `npm run build` | Typecheck, then production build into `client/dist`. |
+| `npm run typecheck` | `tsc --noEmit` on the client. |
+| `npm run lint` | ESLint across the client. |
+| `npm run preview` | Serve the production build (proxies `/api`). |
 
 ---
 
 ## Project structure
 
 ```
-mizi-labs/
-├── client/                        # React landing experience
-│   ├── public/favicon.svg
-│   └── src/
-│       ├── components/
-│       │   ├── forms/             # ContactForm — the only stateful form
-│       │   ├── layout/            # Navbar, Footer, Section, Container
-│       │   ├── sections/          # One component per narrative section
-│       │   ├── ui/                # Button, Eyebrow, SectionHeading, Logo, Icons
-│       │   └── visuals/           # HeroBackdrop (canvas), AfricaMap (SVG)
-│       ├── data/site.js           # Every word on the page, in one file
-│       ├── hooks/                 # useInView, useCountUp, usePrefersReducedMotion…
-│       ├── lib/
-│       │   ├── africa.js          # Continent geometry, projection, region network
-│       │   └── api.js             # Typed-ish API client with timeouts
-│       ├── styles/                # tokens.css · base.css · utilities.css
-│       ├── App.jsx
-│       └── main.jsx
-└── server/                        # Express API
-    └── src/
-        ├── config/env.js          # Environment parsing in one place
-        ├── controllers/           # HTTP shape only
-        ├── data/contactTopics.js  # Enquiry topics (single source of truth)
-        ├── middleware/            # Error handling, rate limits
-        ├── routes/                # Route tables
-        ├── services/              # Persistence and notifications
-        ├── utils/                 # ApiError, asyncHandler, validate, logger
-        ├── app.js                 # App assembly
-        └── index.js               # Bootstrap and graceful shutdown
+client/src/
+├── types/index.ts            # Domain model: CoverageLevel, DatasetRecord, Provenance…
+├── data/                     # Mock data, strictly separate from presentation
+│   ├── countries.ts          # 50 countries, centroids, illustrative coverage
+│   ├── catalogue.ts          # 7 data domains + example dataset records
+│   └── site.ts               # Every word on the page
+├── lib/
+│   ├── africa.ts             # Projection, coastline, Voronoi regions, connections
+│   └── api.ts                # Typed API client
+├── hooks/                    # useInView, useActiveSection, usePrefersReducedMotion…
+├── components/
+│   ├── layout/               # Navbar, Footer, Section, Container
+│   ├── ui/                   # Button, StatusBadge, CoverageDot, Icons, Logo…
+│   ├── visuals/              # AfricaDataMap, DataConvergence
+│   ├── forms/                # SignupForm
+│   └── sections/             # One component per narrative section
+└── styles/                   # tokens.css · base.css · utilities.css
 ```
 
-### Where things live
+The page reads in sixteen sections: hero → problem → what MIZI is → **the Data Map** →
+domains → data quality → gaps → methodology → global research → Rwanda pilot → research
+question → audiences → roadmap → vision → principles → join.
 
-- **Copy** lives in [`client/src/data/site.js`](client/src/data/site.js). Sections import
-  from it, so editing text never means editing layout.
-- **Colour, type, spacing and motion** live in
-  [`client/src/styles/tokens.css`](client/src/styles/tokens.css). Components only reference
-  semantic tokens (`--color-heading`, `--color-border`), so adding `.surface--dark` to any
-  element re-themes everything inside it.
-- **The Africa visual** is generated from coordinates in
-  [`client/src/lib/africa.js`](client/src/lib/africa.js): one generalised coastline,
-  projected once, then reused for the land shape, the sampled data lattice, and the
-  sixteen agro-ecological region nodes. It is intentionally non-political — no borders,
-  no capitals.
+### Ready for the real application
+
+`data/` holds mock objects shaped like the eventual API responses, and `lib/api.ts` is the only
+place that talks to a server. When the Data Map application exists, its catalogue endpoints go
+in `api.ts` and the sections keep their props — nothing in `components/` knows where the data
+came from.
+
+---
+
+## The map
+
+`lib/africa.ts` builds every map on the page from one set of coordinates:
+
+1. A generalised African coastline in longitude/latitude, projected equirectangularly.
+2. A lattice of cells across the continent, each clipped to the coastline by ray casting.
+3. Each cell assigned to its **nearest country centroid** — a Voronoi partition.
+4. Edges emitted wherever two neighbouring cells belong to different countries.
+
+That produces the binned look of a real coverage raster instead of a fake political map, and the
+regions are honestly labelled as approximations. Cells are grouped into one `<path>` per country,
+so the map is ~50 DOM nodes rather than ~2,000, and the geometry is computed once per session and
+shared by all three instances.
+
+One component, `AfricaDataMap`, serves three modes:
+
+| Mode | Where | Behaviour |
+| ---- | ----- | --------- |
+| `ambient` | Hero | Graticule, observation points, animated connections. |
+| `explore` | Data Map | Neutral regions, click or keyboard to select a country. |
+| `coverage` | Data Gaps | The green / amber / red scale, with a legend. |
+
+Coverage colour is painted in exactly one section, next to its legend, so the product map never
+implies a finished inventory. In `explore` mode the map and the country list are two views of one
+selection, which is also what makes the section keyboard-operable.
 
 ---
 
 ## The API
 
-Base URL: `/api`. Every response is `{ ok: true, data }` or
-`{ ok: false, error: { status, message, details? } }`.
+Base URL `/api`. Responses are `{ ok, data }` or `{ ok: false, error }`.
 
-| Method | Endpoint                | Purpose                                            |
-| ------ | ----------------------- | -------------------------------------------------- |
-| `GET`  | `/api`                  | Service descriptor.                                 |
-| `GET`  | `/api/health`           | Liveness and uptime.                                |
-| `GET`  | `/api/contact/topics`   | Enquiry topics for the form.                        |
-| `POST` | `/api/contact`          | Submit an enquiry.                                  |
+| Method | Endpoint | Purpose |
+| ------ | -------- | ------- |
+| `GET` | `/api/health` | Liveness and uptime. |
+| `POST` | `/api/signups` | Research mailing list. |
 
-The topics list is served rather than duplicated in the client, so the form options and the
-server's validation whitelist cannot drift apart.
+Sign-ups append to `server/data/signups.jsonl` (git-ignored) behind `saveSignup()`, so a database
+can replace the file without touching a caller. Protection: `helmet`, an origin allowlist, a
+32 kB body cap, 300 requests / 15 min across the API, 5 sign-ups / hour, and a honeypot that
+returns a normal-looking `202` to bots.
 
-**Submissions** are appended to `server/data/submissions.jsonl` (git-ignored) — durable,
-greppable, and swappable for a database behind `saveSubmission()`. Set `CONTACT_WEBHOOK_URL`
-to also forward each enquiry to Slack, a CRM, or Zapier; a webhook failure is logged and
-never fails the visitor's request.
-
-**Protection**: `helmet` headers, an origin allowlist, a 32 kB body cap, 300 requests per
-15 minutes per IP across the API, 5 submissions per hour on the contact endpoint, and a
-honeypot field that returns a normal-looking `202` to bots.
-
-### Environment
-
-| Variable              | Default                          | Purpose                        |
-| --------------------- | -------------------------------- | ------------------------------ |
-| `PORT`                | `5050`                           | API port.                      |
-| `CORS_ORIGINS`        | `http://localhost:5173`          | Comma-separated origin allowlist. |
-| `SUBMISSIONS_FILE`    | `data/submissions.jsonl`         | Where enquiries are stored.    |
-| `CONTACT_WEBHOOK_URL` | _(empty)_                        | Optional outbound notification. |
-
-Client-side: `VITE_DEV_API_TARGET` (dev proxy target) and `VITE_API_BASE_URL` (absolute API
-base for production builds; leave empty to call the same origin).
+Set `SIGNUP_WEBHOOK_URL` to forward each sign-up to Slack or a CRM; a webhook failure is logged
+and never fails the visitor's request.
 
 ---
 
 ## Design system
 
-**Palette** — deep forest green, near-black charcoal, warm ivory, with muted sage and warm
-gold as accents. Sections alternate between ivory and forest surfaces to give the page
-rhythm; both are defined as complete token sets, so a section changes tone with one class.
+**Palette** — charcoal first (`--ink-*`), warm ivory, restrained agricultural green as an accent
+rather than a surface, muted earth tones, and a single amber for emphasis. The coverage scale
+(`--coverage-strong / -limited / -gap / -unassessed`) is defined once and used by the map, the
+legend, the country list and the record panels alike.
 
-**Type** — Space Grotesk for display, Inter for body, IBM Plex Mono for labels and readouts.
-Sizes are fluid `clamp()` values, so headings scale with the viewport instead of stepping at
-breakpoints.
+**Type** — Space Grotesk for headings, Inter for body, IBM Plex Mono for labels and readouts, and
+Instrument Serif italic reserved for the few places the page makes a statement. Sizes are fluid
+`clamp()` values.
 
-**Motion** — a drifting node network on canvas in the hero, an animated region network over
-the Africa map, scroll reveals via `IntersectionObserver`, and count-up readouts. All of it
-is bounded: animation pauses when the tab is hidden or the element leaves the viewport, and
-every effect is disabled under `prefers-reduced-motion`.
+**Colour is never the only signal** — every `CoverageDot` carries a written label or an accessible
+name, so the four-level scale survives colour blindness and greyscale printing.
 
-**Accessibility** — semantic landmarks and one `<h1>`, a skip link, `aria-labelledby` on
-every section, labelled form fields with inline errors wired via `aria-describedby`,
-visible focus rings, and content that stays readable if JavaScript never runs.
-
----
-
-## Notes
-
-The technology tracks (MIZI Climate, Crop, Vision, Water, Research, Robotics) are presented
-as the company's **ecosystem and research direction**, and the page says so explicitly.
-Nothing on the site claims a shipped commercial product.
+**Motion** — connection arcs, a travelling beam on the vision pipeline, blinking observation
+points, and scroll reveals. Long-running animations pause when their section is off screen, and
+everything is disabled under `prefers-reduced-motion`.
 
 ---
 
-© 2026 MIZI Labs. All rights reserved.
+© 2026 MIZI Labs

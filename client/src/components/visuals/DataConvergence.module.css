@@ -1,0 +1,79 @@
+.wrapper {
+  width: 100%;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+}
+
+.label {
+  fill: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.origin {
+  fill: var(--sage-400);
+  opacity: 0.75;
+}
+
+.link {
+  fill: none;
+  stroke-width: 1.1;
+  stroke-dasharray: 4 8;
+  animation: drift 4.5s linear infinite;
+  animation-delay: calc(var(--index, 0) * -320ms);
+}
+
+.node {
+  fill: var(--color-accent-soft);
+  stroke: var(--color-gold);
+  stroke-width: 1.2;
+}
+
+.halo {
+  fill: none;
+  stroke: var(--color-gold);
+  opacity: 0.4;
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 5s var(--ease-out-soft) infinite;
+}
+
+.nodeLabel {
+  /* Token-driven so the diagram reads on either surface tone. */
+  fill: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+@keyframes drift {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .halo {
+    animation: none;
+  }
+}

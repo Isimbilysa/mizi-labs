@@ -1,0 +1,179 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* --- Frame ---------------------------------------------------------------- */
+
+.graticule path {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 5;
+}
+
+.landBase {
+  fill: rgba(255, 255, 255, 0.028);
+}
+
+.coastline {
+  fill: none;
+  stroke: rgba(214, 224, 219, 0.42);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+/* --- Binned coverage regions ---------------------------------------------- */
+
+/* Exploring is a neutral act: the product map shows terrain and selection,
+   not coverage. Coverage is stated once, in the gaps section, with a legend. */
+.region {
+  fill: rgba(233, 240, 236, 0.07);
+  transition:
+    opacity var(--duration-base) var(--ease-out-soft),
+    fill var(--duration-base) var(--ease-out-soft);
+}
+
+.region[data-interactive='true'] {
+  cursor: pointer;
+}
+
+.region[data-interactive='true']:hover {
+  fill: rgba(233, 240, 236, 0.16);
+}
+
+.region[data-selected='true'] {
+  fill: rgba(201, 162, 39, 0.34);
+}
+
+.boundaries {
+  fill: none;
+  stroke: rgba(233, 240, 236, 0.16);
+  stroke-width: 0.5;
+}
+
+/* Coverage mode is the one place the scale is painted across the continent. */
+.coverage .region {
+  fill: var(--coverage-unassessed);
+  opacity: 0.44;
+}
+
+.coverage .region[data-coverage='strong'] {
+  fill: var(--coverage-strong);
+}
+
+.coverage .region[data-coverage='limited'] {
+  fill: var(--coverage-limited);
+}
+
+.coverage .region[data-coverage='gap'] {
+  fill: var(--coverage-gap);
+}
+
+.coverage .boundaries {
+  stroke: rgba(12, 16, 18, 0.32);
+  stroke-width: 0.4;
+}
+
+/* --- Connections ---------------------------------------------------------- */
+
+.connections path {
+  fill: none;
+  stroke: rgba(166, 192, 177, 0.55);
+  stroke-width: 0.9;
+  stroke-dasharray: 5 7;
+}
+
+.wrapper:not([data-static='true']) .connections path {
+  animation: flow 5s linear infinite;
+  animation-delay: calc(var(--index, 0) * -280ms);
+}
+
+/* --- Observation points --------------------------------------------------- */
+
+.points circle {
+  fill: var(--gold-500);
+  opacity: 0.75;
+}
+
+.wrapper:not([data-static='true']) .points circle {
+  animation: blink 6s var(--ease-out-soft) infinite;
+  animation-delay: calc(var(--index, 0) * 420ms);
+}
+
+/* --- Country stations ----------------------------------------------------- */
+
+.station {
+  fill: rgba(233, 240, 236, 0.5);
+  transition:
+    r var(--duration-base) var(--ease-out-expo),
+    fill var(--duration-base) var(--ease-out-soft);
+}
+
+.station[data-coverage='strong'] {
+  fill: rgba(233, 240, 236, 0.72);
+}
+
+.station[data-pilot='true'],
+.station[data-selected='true'] {
+  fill: var(--gold-400);
+}
+
+/* --- Labels --------------------------------------------------------------- */
+
+.label {
+  fill: rgba(233, 240, 236, 0.62);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.label[data-selected='true'] {
+  fill: var(--ivory-50);
+  font-size: 10px;
+}
+
+/* --- Mode adjustments ----------------------------------------------------- */
+
+.ambient .coastline {
+  stroke: rgba(214, 224, 219, 0.3);
+}
+
+.coverage .connections {
+  display: none;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  45% {
+    opacity: 0.95;
+  }
+}
+
+/* Labels are supporting detail — reserve them for wider screens. */
+@media (max-width: 760px) {
+  .label {
+    display: none;
+  }
+
+  .label[data-selected='true'] {
+    display: block;
+    font-size: 13px;
+  }
+}

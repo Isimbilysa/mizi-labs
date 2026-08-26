@@ -1,102 +1,146 @@
 .section {
   border-top: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
-.container {
+.pipeline {
   position: relative;
-}
-
-.body {
-  max-width: 66ch;
-  margin-top: var(--space-6);
-  color: var(--color-muted);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-}
-
-/* --- Horizons ------------------------------------------------------------- */
-
-.horizons {
-  display: grid;
-  gap: var(--space-6);
   margin-top: var(--space-9);
+  padding-block: var(--space-4);
 }
 
-.horizon {
-  position: relative;
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-border-strong);
-}
+/* --- Spine ---------------------------------------------------------------- */
 
-.horizon::before {
-  content: '';
+.spine {
   position: absolute;
-  top: -5px;
-  left: 0;
-  width: 9px;
-  height: 9px;
+  top: 0;
+  bottom: 0;
+  left: 11px;
+  width: 2px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--color-border-strong) 6%,
+    var(--color-border-strong) 94%,
+    transparent 100%
+  );
+}
+
+.beam {
+  position: absolute;
+  inset-inline: -1px;
+  height: 18%;
+  background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
+  opacity: 0;
+}
+
+.pipeline[data-active='true'] .beam {
+  opacity: 1;
+  animation: travel 6.5s var(--ease-out-soft) infinite;
+}
+
+/* --- Stages --------------------------------------------------------------- */
+
+.stages {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-left: 0;
+}
+
+.marker {
+  flex: none;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
   background-color: var(--color-bg);
-  border: 2px solid var(--color-accent);
   transition:
-    background-color var(--duration-base) var(--ease-out-soft),
-    border-color var(--duration-base) var(--ease-out-soft);
+    border-color var(--duration-base) var(--ease-out-soft),
+    background-color var(--duration-base) var(--ease-out-soft);
 }
 
-.horizon:hover::before {
-  background-color: var(--color-gold);
-  border-color: var(--color-gold);
-}
-
-.period {
-  color: var(--color-gold);
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-}
-
-.horizonTitle {
-  margin-top: var(--space-3);
-  font-size: var(--text-xl);
-  font-weight: 600;
-}
-
-.horizonBody {
-  margin-top: var(--space-2);
-  max-width: 42ch;
-  color: var(--color-muted);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-}
-
-/* --- Closing statement ---------------------------------------------------- */
-
-.statementWrap {
-  margin-top: var(--space-9);
-  padding-top: var(--space-8);
-  border-top: 1px solid var(--color-border);
-}
-
-.statement {
-  max-width: 22ch;
-  color: var(--color-accent);
+.label {
   font-family: var(--font-display);
-  font-size: var(--display-sm);
+  font-size: var(--display-xs);
   font-weight: 600;
-  line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
-  text-wrap: balance;
+  line-height: 1.1;
+  color: var(--color-muted);
+  transition: color var(--duration-base) var(--ease-out-soft);
 }
 
-@media (min-width: 860px) {
-  .horizons {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-5);
+/* The two MIZI stages are the only ones we are responsible for. */
+.stage[data-kind='mizi'] .marker {
+  border-color: var(--color-gold);
+  background-color: var(--color-gold);
+}
+
+.stage[data-kind='mizi'] .label {
+  color: var(--color-heading);
+}
+
+.stage[data-kind='input'] .marker {
+  border-color: var(--color-accent);
+}
+
+.stage[data-kind='input'] .label {
+  color: var(--color-text);
+}
+
+.stage[data-kind='outcome'] .marker {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.stage[data-kind='outcome'] .label {
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--display-sm);
+  letter-spacing: 0;
+}
+
+.stage:hover .label {
+  color: var(--color-heading);
+}
+
+@media (min-width: 760px) {
+  .stages {
+    gap: var(--space-6);
   }
 
-  .statement {
-    max-width: 26ch;
+  .label {
+    font-size: var(--display-sm);
+  }
+
+  .stage[data-kind='outcome'] .label {
     font-size: var(--display-md);
+  }
+}
+
+@keyframes travel {
+  0% {
+    transform: translateY(-120%);
+  }
+  75%,
+  100% {
+    transform: translateY(600%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pipeline[data-active='true'] .beam {
+    animation: none;
+    opacity: 0;
   }
 }

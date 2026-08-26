@@ -1,0 +1,30 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 2px;
+  background-color: var(--coverage-unassessed);
+}
+
+.dot[data-level='strong'] {
+  background-color: var(--coverage-strong);
+}
+
+.dot[data-level='limited'] {
+  background-color: var(--coverage-limited);
+}
+
+.dot[data-level='gap'] {
+  background-color: var(--coverage-gap);
+}
+
+.label {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+}

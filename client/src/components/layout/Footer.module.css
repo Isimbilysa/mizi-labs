@@ -15,17 +15,30 @@
 .brand {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  max-width: 34ch;
+  gap: var(--space-3);
+  max-width: 42ch;
 }
 
 .tagline {
+  margin-top: var(--space-1);
+  color: var(--color-heading);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* What MIZI Labs is today, stated plainly, on every page view. */
+.statement {
   color: var(--color-muted);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
 }
 
-.navTitle {
+.column {
+  min-width: 0;
+}
+
+.columnTitle {
   margin-bottom: var(--space-4);
   color: var(--color-subtle);
   font-family: var(--font-mono);
@@ -35,31 +48,21 @@
   text-transform: uppercase;
 }
 
-.navList {
+.linkList {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   margin: 0;
 }
 
-.navLink {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--space-3);
+.link {
   color: var(--color-muted);
   font-size: var(--text-sm);
   transition: color var(--duration-base) var(--ease-out-soft);
 }
 
-.navLink:hover {
+.link:hover {
   color: var(--color-heading);
-}
-
-.handle {
-  color: var(--color-subtle);
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  letter-spacing: 0.04em;
 }
 
 .bottom {
@@ -71,25 +74,30 @@
   padding-top: var(--space-5);
 }
 
-.legal,
-.focus {
+.legal {
   color: var(--color-subtle);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
 }
 
-.focus {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin: 0;
-  text-transform: uppercase;
+@media (min-width: 640px) {
+  .top {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-7);
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 960px) {
   .top {
-    grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
-    gap: var(--space-7);
+    grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: auto;
   }
 }

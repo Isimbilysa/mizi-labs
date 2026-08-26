@@ -25,11 +25,16 @@
 
 .js-reveal .reveal {
   opacity: 0;
-  transform: translateY(22px);
+  /* Short travel on a long curve reads as settling rather than sliding. */
+  transform: translate3d(0, 14px, 0);
   transition:
-    opacity var(--duration-slow) var(--ease-out-soft),
-    transform var(--duration-slow) var(--ease-out-expo);
+    opacity var(--duration-slow) var(--ease-reveal),
+    transform var(--duration-slow) var(--ease-reveal);
   transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Hint the compositor only while there is still something to animate. */
+.js-reveal .reveal:not([data-revealed='true']) {
   will-change: opacity, transform;
 }
 
@@ -55,4 +60,25 @@
   background-size: 74px 74px;
   mask-image: radial-gradient(ellipse 80% 65% at 50% 40%, #000 30%, transparent 100%);
   pointer-events: none;
+}
+
+/* A single sheet of film grain over the whole page. It sits below the header
+   so the sticky chrome stays perfectly crisp, and it never takes a pointer. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.42;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.34'/%3E%3C/svg%3E");
+}
+
+/* Pull-quote voice: used only where the page stops to make a statement. */
+.statement-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.14;
 }

@@ -27,9 +27,6 @@ export const env = {
     'http://localhost:5173',
     'http://127.0.0.1:5173',
   ]),
-  submissionsFile: path.resolve(
-    PACKAGE_ROOT,
-    process.env.SUBMISSIONS_FILE ?? 'data/submissions.jsonl',
-  ),
-  contactWebhookUrl: process.env.CONTACT_WEBHOOK_URL ?? '',
+  signupsFile: path.resolve(PACKAGE_ROOT, process.env.SIGNUPS_FILE ?? 'data/signups.jsonl'),
+  signupWebhookUrl: process.env.SIGNUP_WEBHOOK_URL ?? '',
 };

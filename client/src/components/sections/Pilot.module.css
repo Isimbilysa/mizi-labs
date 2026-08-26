@@ -1,0 +1,93 @@
+.section {
+  border-top: 1px solid var(--color-border);
+}
+
+.scales {
+  display: grid;
+  gap: var(--space-5);
+  margin: var(--space-9) 0 0;
+}
+
+.scale {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Each step out widens the ring: Rwanda, then the region, then the continent. */
+.ring {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+}
+
+.scale[data-index='0'] .ring {
+  border-color: var(--color-accent);
+}
+
+.ringInner {
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.scale[data-index='0'] .ringInner {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-gold);
+}
+
+.scale[data-index='1'] .ringInner {
+  width: 26px;
+  height: 26px;
+  opacity: 0.55;
+}
+
+.scale[data-index='2'] .ringInner {
+  width: 40px;
+  height: 40px;
+  opacity: 0.28;
+}
+
+.scaleBody {
+  min-width: 0;
+}
+
+.scaleHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.scaleLabel {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.scaleSummary {
+  margin-top: var(--space-2);
+  max-width: 46ch;
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+@media (min-width: 900px) {
+  .scales {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .scale {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

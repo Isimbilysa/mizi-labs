@@ -6,39 +6,45 @@
    ========================================================================== */
 
 :root {
-  /* --- Palette ------------------------------------------------------------ */
-  --ink-950: #050a08;
-  --ink-900: #0a1512;
-  --ink-800: #0f1f1a;
-  --ink-700: #16302a;
+  /* --- Palette ------------------------------------------------------------
+     Charcoal first. Green is an accent for agriculture, never the surface. */
+  --ink-950: #07090a;
+  --ink-900: #0d1012;
+  --ink-800: #14181a;
+  --ink-700: #1d2225;
 
-  --forest-900: #082019;
-  --forest-800: #0c3527;
-  --forest-700: #114533;
-  --forest-600: #175a44;
-  --forest-500: #1e7a5c;
-  --forest-400: #2f9673;
+  --forest-900: #0b1a15;
+  --forest-800: #10261f;
+  --forest-700: #16382c;
+  --forest-600: #1d4c3a;
+  --forest-500: #2a6a51;
+  --forest-400: #3d8a6b;
 
   --sage-600: #4a7462;
   --sage-500: #5f8c77;
   --sage-400: #7fa894;
   --sage-300: #a6c0b1;
 
-  --gold-600: #b08f4f;
-  --gold-500: #c8a96a;
-  --gold-400: #d9c08c;
-  --sand-200: #e4d9c4;
+  --gold-600: #a8842f;
+  --gold-500: #c9a227;
+  --gold-400: #dcbb5c;
+  --sand-200: #e2d6bd;
+
+  --clay-500: #c4664a;
+  --clay-400: #d38267;
 
   --ivory-50: #fbf9f4;
-  --ivory-100: #f5f1e8;
-  --ivory-200: #ebe5d8;
-  --ivory-300: #d9d1bf;
-  --ivory-400: #b9b0a0;
+  --ivory-100: #f4f1ea;
+  --ivory-200: #e8e3d8;
+  --ivory-300: #d6cfc1;
+  --ivory-400: #b5aea1;
 
   /* --- Typography --------------------------------------------------------- */
   --font-display: 'Space Grotesk', 'Inter', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, monospace;
+  /* Reserved for pull-quote statements. Never for headings or UI. */
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 
   --text-2xs: 0.6875rem;
   --text-xs: 0.75rem;
@@ -93,9 +99,11 @@
   /* --- Motion ------------------------------------------------------------- */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --duration-fast: 180ms;
-  --duration-base: 320ms;
-  --duration-slow: 800ms;
+  /* Long tail, almost no head — motion that decelerates instead of stopping. */
+  --ease-reveal: cubic-bezier(0.25, 0.6, 0.15, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 620ms;
 
   /* --- Semantic: light surface (default) ---------------------------------- */
   --color-bg: var(--ivory-100);
@@ -112,6 +120,12 @@
   --color-grid: rgba(10, 21, 18, 0.055);
   --shadow-card: 0 1px 2px rgba(8, 32, 25, 0.04), 0 14px 34px -22px rgba(8, 32, 25, 0.4);
   --shadow-lifted: 0 2px 4px rgba(8, 32, 25, 0.05), 0 28px 60px -30px rgba(8, 32, 25, 0.45);
+
+  /* Coverage scale — one source of truth for every data visualisation. */
+  --coverage-strong: #3d8a6b;
+  --coverage-limited: #c9a227;
+  --coverage-gap: #c4664a;
+  --coverage-unassessed: #6b7378;
 
   /* Controls */
   --btn-primary-bg: var(--forest-700);

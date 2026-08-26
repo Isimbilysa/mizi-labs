@@ -12,11 +12,11 @@ export const apiLimiter = rateLimit({
   handler: jsonLimitResponse('Too many requests. Please try again shortly.'),
 });
 
-/** Tight ceiling for writes — a human sends one enquiry, not five an hour. */
-export const contactLimiter = rateLimit({
+/** Tight ceiling for writes — a person signs up once, not five times an hour. */
+export const signupLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   limit: 5,
   standardHeaders: 'draft-7',
   legacyHeaders: false,
-  handler: jsonLimitResponse('You have sent several messages already. Please try again later.'),
+  handler: jsonLimitResponse('That is several sign-ups already. Please try again later.'),
 });

@@ -1,216 +1,172 @@
 .hero {
   position: relative;
+  min-height: min(100dvh, 1000px);
   display: flex;
-  align-items: stretch;
-  min-height: min(100dvh, 980px);
-  padding-block: calc(var(--header-height) + var(--space-9)) var(--space-10);
-  background-color: var(--ink-900);
-  color: var(--color-text);
+  flex-direction: column;
+  justify-content: center;
+  padding-block: calc(var(--header-height) + var(--space-8)) var(--space-9);
+  background-color: var(--ink-950);
   overflow: hidden;
   isolation: isolate;
 }
 
+/* --- Backdrop ------------------------------------------------------------- */
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 78% 12%, rgba(29, 76, 58, 0.4) 0%, transparent 58%),
+    linear-gradient(180deg, #080b0c 0%, #0d1012 55%, #0a0d0f 100%);
+}
+
+.glow {
+  position: absolute;
+  top: -18%;
+  right: 4%;
+  width: min(56vw, 680px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61, 138, 107, 0.22) 0%, transparent 68%);
+  filter: blur(60px);
+}
+
+/* A slow sweep, as if the continent were being resurveyed. */
+.scanline {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.05), transparent);
+  animation: sweep 16s var(--ease-out-soft) infinite;
+}
+
+/* --- Layout --------------------------------------------------------------- */
+
 .container {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-9);
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
   width: 100%;
 }
 
-/* --- Headline block ------------------------------------------------------- */
-
-.content {
-  max-width: 940px;
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 46ch;
 }
 
 .eyebrow,
 .supporting,
 .actions,
-.signature,
-.meta {
+.stage,
+.mapFigure {
   opacity: 0;
-  animation: rise var(--duration-slow) var(--ease-out-expo) forwards;
+  animation: rise var(--duration-slow) var(--ease-reveal) forwards;
 }
 
 .eyebrow {
-  animation-delay: 120ms;
+  /* Tighter than the default eyebrow so the descriptor holds one line. */
+  letter-spacing: var(--tracking-wide);
+  animation-delay: 100ms;
 }
 
 .title {
-  margin-top: var(--space-5);
-  font-size: var(--display-lg);
+  margin-top: var(--space-2);
+  font-size: var(--display-md);
   font-weight: 600;
-  line-height: var(--leading-tight);
+  line-height: 1.02;
   letter-spacing: var(--tracking-tight);
 }
 
 .titleLine {
   display: block;
   opacity: 0;
-  animation: rise var(--duration-slow) var(--ease-out-expo) forwards;
-  animation-delay: calc(var(--line) * 110ms + 220ms);
+  animation: rise var(--duration-slow) var(--ease-reveal) forwards;
+  animation-delay: calc(var(--line) * 110ms + 200ms);
 }
 
 .titleLine:last-child {
-  color: transparent;
-  background: linear-gradient(96deg, var(--ivory-50) 18%, var(--sage-300) 62%, var(--gold-400) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
+  color: var(--sand-200);
 }
 
 .supporting {
-  max-width: 60ch;
-  margin-top: var(--space-5);
+  max-width: 46ch;
   color: var(--color-muted);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  animation-delay: 480ms;
+  animation-delay: 440ms;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-7);
-  animation-delay: 600ms;
+  margin-top: var(--space-4);
+  animation-delay: 560ms;
+}
+
+.stage {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding: 0.45rem 0.85rem 0.45rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  animation-delay: 660ms;
+}
+
+.stageDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gold-500);
+}
+
+/* --- Map ------------------------------------------------------------------ */
+
+.mapFigure {
+  position: relative;
+  margin: 0;
+  animation-delay: 320ms;
+}
+
+.mapCaption {
+  margin-top: var(--space-4);
+  color: var(--color-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .signature {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-7);
-  color: var(--color-subtle);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  animation-delay: 700ms;
-}
-
-.signatureRule {
-  width: clamp(28px, 6vw, 64px);
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold-500), transparent);
-}
-
-/* --- Instrument strip ----------------------------------------------------- */
-
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-6);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-border);
-  animation-delay: 820ms;
-}
-
-.focus {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  margin: 0;
-}
-
-.focusItem {
   position: relative;
-  padding-right: var(--space-4);
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.focusItem:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: var(--color-gold);
-  transform: translateY(-50%);
-}
-
-.markers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6);
-  margin: 0;
-}
-
-.marker {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.markerLabel {
-  color: var(--color-subtle);
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  letter-spacing: var(--tracking-widest);
-  text-transform: uppercase;
-}
-
-.markerValue {
-  margin: 0;
-  color: var(--color-heading);
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
-/* --- Scroll cue ----------------------------------------------------------- */
-
-.scrollCue {
-  position: absolute;
-  right: var(--gutter);
-  bottom: var(--space-6);
   z-index: 1;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  margin-top: var(--space-8);
   color: var(--color-subtle);
-}
-
-.scrollLabel {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  writing-mode: vertical-rl;
-}
-
-.scrollTrack {
-  position: relative;
-  width: 1px;
-  height: 58px;
-  overflow: hidden;
-  background-color: var(--color-border);
-}
-
-.scrollDot {
-  position: absolute;
-  inset-inline: 0;
-  height: 22px;
-  background: linear-gradient(180deg, transparent, var(--gold-500));
-  animation: scroll-trace 2.6s var(--ease-out-soft) infinite;
+  text-align: center;
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translate3d(0, 18px, 0);
   }
   to {
     opacity: 1;
@@ -218,13 +174,13 @@
   }
 }
 
-@keyframes scroll-trace {
+@keyframes sweep {
   0% {
-    transform: translateY(-100%);
+    transform: translateX(-110%);
   }
   60%,
   100% {
-    transform: translateY(300%);
+    transform: translateX(300%);
   }
 }
 
@@ -233,19 +189,23 @@
   .titleLine,
   .supporting,
   .actions,
-  .signature,
-  .meta {
+  .stage,
+  .mapFigure {
     opacity: 1;
     animation: none;
   }
+
+  .scanline {
+    display: none;
+  }
 }
 
-@media (min-width: 1100px) {
-  .scrollCue {
-    display: flex;
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
   }
 
-  .meta {
-    padding-right: calc(var(--space-8) + 20px);
+  .signature {
+    text-align: left;
   }
 }
