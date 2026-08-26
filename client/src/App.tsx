@@ -1,26 +1,25 @@
 import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
-import { Audiences } from '@/components/sections/Audiences';
-import { DataGaps } from '@/components/sections/DataGaps';
+import { DataCoverage } from '@/components/sections/DataCoverage';
 import { DataMap } from '@/components/sections/DataMap';
-import { DataQuality } from '@/components/sections/DataQuality';
 import { Domains } from '@/components/sections/Domains';
-import { GlobalResearch } from '@/components/sections/GlobalResearch';
 import { Hero } from '@/components/sections/Hero';
 import { JoinCta } from '@/components/sections/JoinCta';
 import { Methodology } from '@/components/sections/Methodology';
-import { Pilot } from '@/components/sections/Pilot';
-import { Principles } from '@/components/sections/Principles';
 import { Problem } from '@/components/sections/Problem';
-import { ResearchQuestion } from '@/components/sections/ResearchQuestion';
+import { Research } from '@/components/sections/Research';
 import { Roadmap } from '@/components/sections/Roadmap';
-import { Vision } from '@/components/sections/Vision';
 import { WhatIsMizi } from '@/components/sections/WhatIsMizi';
 
 /**
  * The page argues one case, top to bottom: there is a real agricultural data
  * problem in Africa, here is the map we are building to understand it, here is
  * the method, and here is where it could lead.
+ *
+ * Ten sections, each with one job. Where two sections were making the same
+ * point in two shapes — the roadmap and the vision pipeline, the pilot and the
+ * research question — they were folded into one, because a claim repeated
+ * looks like two claims.
  *
  * Every claim about maturity is carried in the copy and the status badges, so
  * the order can change without the page overstating what exists.
@@ -42,16 +41,10 @@ export default function App() {
         <WhatIsMizi />
         <DataMap />
         <Domains />
-        <DataQuality />
-        <DataGaps />
+        <DataCoverage />
         <Methodology />
-        <GlobalResearch />
-        <Pilot />
-        <ResearchQuestion />
-        <Audiences />
+        <Research />
         <Roadmap />
-        <Vision />
-        <Principles />
         <JoinCta />
       </main>
 

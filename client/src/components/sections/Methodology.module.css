@@ -1,5 +1,13 @@
 .section {
+  background:
+    radial-gradient(85% 55% at 78% 0%, rgba(29, 76, 58, 0.22) 0%, transparent 60%),
+    var(--ink-950);
   border-top: 1px solid var(--color-border);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .steps {
@@ -23,7 +31,7 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: var(--color-bg);
+  background-color: var(--ink-950);
   border: 2px solid var(--color-accent);
   transition: background-color var(--duration-base) var(--ease-out-soft);
 }
@@ -95,5 +103,110 @@
   .step::before {
     top: calc(var(--space-7) * -1 - 4px);
     left: 0;
+  }
+}
+
+/* --- Global research: the same method, read off other countries ----------- */
+
+.global {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.globalTitle {
+  margin: var(--space-3) 0 0;
+  max-width: 22ch;
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.globalLead {
+  margin: var(--space-4) 0 0;
+  max-width: 62ch;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.grid {
+  display: grid;
+  gap: 1px;
+  margin: var(--space-8) 0 0;
+  background-color: var(--color-border);
+  border-block: 1px solid var(--color-border);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-5);
+  background-color: var(--ink-950);
+  transition: background-color var(--duration-base) var(--ease-out-soft);
+}
+
+.card:hover {
+  background-color: var(--color-bg-raised);
+}
+
+.country {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.focus {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.question {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.closing {
+  margin-top: var(--space-8);
+}
+
+.closingText {
+  max-width: 32ch;
+  color: var(--sand-200);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--display-xs);
+  line-height: 1.16;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .closing {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .closingText {
+    max-width: 38ch;
+    font-size: var(--display-sm);
   }
 }

@@ -1,0 +1,193 @@
+.section {
+  border-top: 1px solid var(--color-border);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.title {
+  font-size: var(--display-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+/* Set as a citation, not a marketing pull-quote. */
+.quote {
+  position: relative;
+  margin: var(--space-4) 0 0;
+  padding-left: clamp(1.25rem, 4vw, 2.5rem);
+  border-left: 2px solid var(--color-gold);
+}
+
+.quoteText {
+  max-width: 26ch;
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--display-sm);
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+.supporting {
+  max-width: 62ch;
+  margin-top: var(--space-5);
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.meta {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  margin: var(--space-7) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.metaLabel {
+  color: var(--color-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.metaValue {
+  margin: var(--space-2) 0 0;
+  color: var(--color-heading);
+  font-size: var(--text-base);
+}
+
+/* --- Where the question is being asked ------------------------------------ */
+
+.pilot {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.pilotTitle {
+  margin: var(--space-3) 0 0;
+  max-width: 22ch;
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.pilotLead {
+  margin: var(--space-4) 0 0;
+  max-width: 62ch;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.scales {
+  display: grid;
+  gap: var(--space-5);
+  margin: var(--space-8) 0 0;
+}
+
+.scale {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Each step out widens the ring: Rwanda, then the region, then the continent. */
+.ring {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+}
+
+.scale[data-index='0'] .ring {
+  border-color: var(--color-accent);
+}
+
+.ringInner {
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.scale[data-index='0'] .ringInner {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-gold);
+}
+
+.scale[data-index='1'] .ringInner {
+  width: 26px;
+  height: 26px;
+  opacity: 0.55;
+}
+
+.scale[data-index='2'] .ringInner {
+  width: 40px;
+  height: 40px;
+  opacity: 0.28;
+}
+
+.scaleBody {
+  min-width: 0;
+}
+
+.scaleHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.scaleLabel {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+}
+
+.scaleSummary {
+  margin-top: var(--space-2);
+  max-width: 46ch;
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+@media (min-width: 760px) {
+  .quoteText {
+    max-width: 30ch;
+    font-size: var(--display-md);
+  }
+
+  .meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .scales {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .scale {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

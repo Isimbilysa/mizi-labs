@@ -3,6 +3,7 @@
     radial-gradient(70% 50% at 50% 0%, rgba(29, 76, 58, 0.22) 0%, transparent 62%),
     var(--ink-900);
   border-top: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .container {
@@ -98,5 +99,173 @@
   .stages {
     max-width: 760px;
     margin-inline: auto;
+  }
+}
+
+/* --- Vision pipeline ------------------------------------------------------
+   The same journey as the stages above, drawn as one line instead of six
+   cards: what goes in, the two parts MIZI is responsible for, and what the
+   rest of the field can build once they exist. Class names are prefixed
+   `flow` so they do not collide with the roadmap's own .stage rules.
+   -------------------------------------------------------------------------- */
+
+.vision {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.visionTitle {
+  margin: var(--space-3) 0 0;
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.visionLead {
+  margin: var(--space-4) 0 0;
+  max-width: 62ch;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.flow {
+  position: relative;
+  margin-top: var(--space-8);
+  padding-block: var(--space-4);
+}
+
+.spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 11px;
+  width: 2px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--color-border-strong) 6%,
+    var(--color-border-strong) 94%,
+    transparent 100%
+  );
+}
+
+.beam {
+  position: absolute;
+  inset-inline: -1px;
+  height: 18%;
+  background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
+  opacity: 0;
+}
+
+.flow[data-active='true'] .beam {
+  opacity: 1;
+  animation: travel 6.5s var(--ease-out-soft) infinite;
+}
+
+.flowStages {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.flowStage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.marker {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-strong);
+  background-color: var(--ink-900);
+  transition:
+    border-color var(--duration-base) var(--ease-out-soft),
+    background-color var(--duration-base) var(--ease-out-soft);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--display-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+  color: var(--color-muted);
+  transition: color var(--duration-base) var(--ease-out-soft);
+}
+
+/* The two MIZI stages are the only ones we are responsible for. */
+.flowStage[data-kind='mizi'] .marker {
+  border-color: var(--color-gold);
+  background-color: var(--color-gold);
+}
+
+.flowStage[data-kind='mizi'] .label {
+  color: var(--color-heading);
+}
+
+.flowStage[data-kind='input'] .marker {
+  border-color: var(--color-accent);
+}
+
+.flowStage[data-kind='input'] .label {
+  color: var(--color-text);
+}
+
+.flowStage[data-kind='outcome'] .marker {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.flowStage[data-kind='outcome'] .label {
+  color: var(--color-heading);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--display-sm);
+  letter-spacing: 0;
+}
+
+.flowStage:hover .label {
+  color: var(--color-heading);
+}
+
+@media (min-width: 760px) {
+  .flowStages {
+    gap: var(--space-6);
+  }
+
+  .label {
+    font-size: var(--display-sm);
+  }
+
+  .flowStage[data-kind='outcome'] .label {
+    font-size: var(--display-md);
+  }
+}
+
+@keyframes travel {
+  0% {
+    transform: translateY(-120%);
+  }
+  75%,
+  100% {
+    transform: translateY(600%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow[data-active='true'] .beam {
+    animation: none;
+    opacity: 0;
   }
 }

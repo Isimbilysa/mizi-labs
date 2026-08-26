@@ -41,3 +41,104 @@
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
 }
+
+/* --- Who this is for -----------------------------------------------------
+   Was its own section, which put a list of job titles between the roadmap and
+   the only call to action on the page. It reads better as the answer to
+   "should I sign up?", directly under the form.
+   -------------------------------------------------------------------------- */
+
+.audiences {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.audiencesLabel {
+  margin: 0;
+  color: var(--color-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-raised);
+  transition: border-color var(--duration-base) var(--ease-out-soft);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+}
+
+/* Future work is drawn as future work, not as a fifth available feature. */
+.card[data-future='true'] {
+  border-style: dashed;
+  background-color: transparent;
+}
+
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.name {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.summary {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.card[data-future='true'] .name,
+.card[data-future='true'] .summary {
+  color: var(--color-subtle);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .card[data-future='true'] {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  .card[data-future='true'] .summary {
+    max-width: 52ch;
+  }
+}

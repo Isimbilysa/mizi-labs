@@ -3,9 +3,14 @@ import { Section } from '@/components/layout/Section';
 import { DomainIcon } from '@/components/ui/Icons';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { whatIsMizi } from '@/data/site';
+import { principles, whatIsMizi } from '@/data/site';
 import styles from './WhatIsMizi.module.css';
 
+/**
+ * What MIZI is: three pillars, then the principles they rest on. The
+ * principles used to be their own section, but they only mean anything as a
+ * qualifier on the work described directly above them.
+ */
 export function WhatIsMizi() {
   return (
     <Section
@@ -37,6 +42,23 @@ export function WhatIsMizi() {
             </Reveal>
           ))}
         </ol>
+
+        <div className={styles.principles}>
+          <Reveal>
+            <h3 className={styles.principlesLabel}>{principles.heading}</h3>
+          </Reveal>
+
+          <dl>
+            {principles.items.map((principle, index) => (
+              <Reveal key={principle.id} delay={index * 100} asChild>
+                <div className={styles.principle}>
+                  <dt className={styles.principleName}>{principle.name}</dt>
+                  <dd className={styles.principleSummary}>{principle.summary}</dd>
+                </div>
+              </Reveal>
+            ))}
+          </dl>
+        </div>
       </Container>
     </Section>
   );
