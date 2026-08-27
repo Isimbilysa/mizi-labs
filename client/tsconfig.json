@@ -21,8 +21,10 @@
     "noEmit": true,
     "skipLibCheck": true,
 
-    "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] }
+    // No `baseUrl`: it is removed in TypeScript 7, and `paths` has resolved
+    // relative to this file since TS 4.1. Mirrored by the `@` alias in
+    // vite.config.ts, which is what actually resolves these at build time.
+    "paths": { "@/*": ["./src/*"] }
   },
   "include": ["src", "vite.config.ts"]
 }
