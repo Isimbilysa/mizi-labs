@@ -10,13 +10,13 @@ import type {
 /**
  * Every word on the page.
  *
- * The rule this file exists to protect: MIZI Labs is at the research and
+ * The rule this file exists to protect: SHAZA is at the research and
  * prototype stage. Nothing here may claim indexed datasets, reached farmers,
  * or solved problems, and no statistic appears unless it can be verified.
  */
 
 export const brand = {
-  name: 'MIZI Labs',
+  name: 'SHAZA',
   tagline: 'Rooted in Africa. Built for the future.',
   descriptor: 'African Agricultural Intelligence',
   stage: ['Research stage', 'Prototype in development'],
@@ -25,18 +25,19 @@ export const brand = {
 export const navigation = [
   { id: 'problem', label: 'The Problem', href: '#problem' },
   { id: 'data-map', label: 'Data Map', href: '#data-map' },
-  { id: 'domains', label: 'Domains', href: '#domains' },
+  { id: 'research', label: 'Research', href: '#research-question' },
   { id: 'methodology', label: 'Methodology', href: '#methodology' },
   { id: 'roadmap', label: 'Roadmap', href: '#roadmap' },
+  { id: 'founder', label: 'Founder', href: '#founder' },
 ];
 
 export const hero = {
-  eyebrow: 'MIZI Labs — African Agricultural Intelligence',
-  headline: ["Mapping Africa's", 'Agricultural Intelligence.'],
+  eyebrow: 'Rwanda first · Africa next',
+  headline: ['Agricultural data exists.', 'Can it actually be used?'],
   supporting:
-    "MIZI is building the data foundation for Africa's resilient food future: discovering, connecting and understanding the agricultural data needed to build better climate and food-system technologies.",
+    "SHAZA is a technology company being built in Rwanda. Our first project maps the country's agricultural data: finding each dataset, testing whether it can really be used, and recording who holds it, what it covers and what is missing.",
   primaryCta: { label: 'Explore the Data Map', href: '#data-map' },
-  secondaryCta: { label: 'Read Our Research', href: '#research-question' },
+  secondaryCta: { label: 'Read the Research Question', href: '#research-question' },
   mapCaption: 'Interactive data map — prototype',
 };
 
@@ -59,30 +60,30 @@ export const problem = {
   sources: ['Climate', 'Soil', 'Crops', 'Yield', 'Satellite', 'Water', 'Markets', 'Research'],
 };
 
-export const whatIsMizi = {
-  eyebrow: 'What is MIZI',
-  heading: "We're building the intelligence layer.",
-  lead: "MIZI is a research and technology initiative focused on making Africa's agricultural data more discoverable, understandable and usable for research, innovation and eventually AI-powered decision systems.",
+export const whatIsShaza = {
+  eyebrow: 'What is SHAZA',
+  heading: "Know what's there before building on it.",
+  lead: "Information about Africa's soil, weather, land, crops and climate risks exists, but it is scattered, hard to access, and difficult to turn into practical decisions. Before anyone can build good tools on top of it, someone needs to know what is actually there.",
   pillars: [
     {
-      id: 'discover',
+      id: 'find',
       index: '01',
-      name: 'Discover',
-      summary: 'Find agricultural datasets across Africa.',
+      name: 'Find',
+      summary: 'Locate agricultural datasets held by governments, researchers, satellites and markets.',
       icon: 'discover' as const,
     },
     {
-      id: 'connect',
+      id: 'test',
       index: '02',
-      name: 'Connect',
-      summary: 'Understand how different datasets relate to one another.',
+      name: 'Test',
+      summary: 'Try to use each one: how to access it, what format it comes in, what it covers.',
       icon: 'connect' as const,
     },
     {
-      id: 'build',
+      id: 'record',
       index: '03',
-      name: 'Build',
-      summary: 'Use better data to develop the next generation of agricultural intelligence.',
+      name: 'Record',
+      summary: 'Publish who holds it, how to get it, and what is missing.',
       icon: 'build' as const,
     },
   ],
@@ -90,7 +91,7 @@ export const whatIsMizi = {
 
 export const product = {
   eyebrow: 'First product',
-  heading: 'Introducing the MIZI African Agricultural Data Map',
+  heading: 'Introducing the SHAZA African Agricultural Data Map',
   subheading: "An evolving map of Africa's agricultural data.",
   description:
     'Explore what agricultural information exists across African countries, and identify where the data is strong, fragmented, limited or missing.',
@@ -111,7 +112,7 @@ export const domains = {
 export const quality = {
   eyebrow: 'Data quality',
   heading: 'Not all data is created equal.',
-  lead: "MIZI doesn't only ask whether a dataset exists. We ask whether it can actually be used.",
+  lead: "SHAZA doesn't only ask whether a dataset exists. We ask whether it can actually be used.",
   exampleLabel: 'Example interface — data shown for illustration',
   criteria: [
     'Coverage in time',
@@ -155,9 +156,9 @@ export const methodology = {
 };
 
 export const globalResearch = {
-  eyebrow: 'Global research',
+  eyebrow: 'Global research · planned',
   heading: 'Learning globally. Building locally.',
-  lead: "Agricultural innovation doesn't belong to one country. MIZI studies successful approaches around the world and investigates how their underlying principles can be adapted to different African environments.",
+  lead: "Agricultural innovation doesn't belong to one country. These are questions we want to study next: how successful approaches elsewhere work, and whether their principles could be adapted to African environments.",
   cases: [
     {
       id: 'vietnam',
@@ -191,13 +192,13 @@ export const globalResearch = {
     },
   ] satisfies GlobalCase[],
   closing:
-    "We don't copy solutions. We study what makes them work, and whether those principles can translate to African contexts.",
+    "The aim is not to copy solutions. It is to understand what makes them work, and whether those principles translate to African contexts.",
 };
 
 export const pilot = {
   eyebrow: 'Pilot',
   heading: 'Starting in Rwanda. Building for Africa.',
-  lead: 'Rwanda is our initial research environment. We are beginning here to understand the agricultural data landscape deeply before expanding the MIZI framework to other African countries.',
+  lead: 'Rwanda is our initial research environment. We are beginning here to understand the agricultural data landscape deeply before expanding the SHAZA framework to other African countries.',
   scales: [
     {
       id: 'rwanda',
@@ -235,7 +236,7 @@ export const researchQuestion = {
 };
 
 export const audiences = {
-  eyebrow: 'Who MIZI is for',
+  eyebrow: 'Who SHAZA is for',
   heading: "Built for the people building Africa's food future.",
   items: [
     {
@@ -262,62 +263,41 @@ export const audiences = {
       id: 'farmers',
       name: 'Farmers',
       summary:
-        'Eventually access decision-support technologies built on the MIZI intelligence layer.',
+        'Eventually access decision-support technologies built on the SHAZA intelligence layer.',
       future: true,
     },
   ] satisfies Audience[],
   futureLabel: 'Future development',
 };
 
+// Typed up front so optional fields like `items` stay on the type even when
+// no stage currently uses them.
+const roadmapStages: RoadmapStage[] = [
+  {
+    id: 'data-map',
+    title: 'Data Map',
+    summary: "Find, test and record Rwanda's agricultural datasets.",
+    status: 'building',
+  },
+  {
+    id: 'geospatial',
+    title: 'Geospatial & Climate Tools',
+    summary: 'Build maps and climate-risk tools on the datasets that hold up.',
+    status: 'research',
+  },
+  {
+    id: 'decision-support',
+    title: 'AI Decision Support',
+    summary: 'AI that supports agricultural decisions, built only on data we have tested.',
+    status: 'future',
+  },
+];
+
 export const roadmap = {
   eyebrow: 'Roadmap',
   heading: "Where we're going.",
   lead: 'Each stage depends on the one above it. Only the first is being built today.',
-  stages: [
-    {
-      id: 'data-map',
-      title: 'MIZI Data Map',
-      summary: 'Our first product.',
-      status: 'building',
-    },
-    {
-      id: 'data-layer',
-      title: 'Agricultural Data Layer',
-      summary: 'Standardise and connect datasets.',
-      status: 'future',
-    },
-    {
-      id: 'climate',
-      title: 'MIZI Climate',
-      summary: 'Climate and agricultural intelligence.',
-      status: 'research',
-    },
-    {
-      id: 'ai',
-      title: 'MIZI AI',
-      summary: 'Machine learning and scenario analysis.',
-      status: 'future',
-    },
-    {
-      id: 'decision-support',
-      title: 'Decision Support',
-      summary: 'Tools for researchers, farmers, businesses and policymakers.',
-      status: 'future',
-    },
-    {
-      id: 'agtech',
-      title: 'Agricultural Technology',
-      summary: 'Potential future work in:',
-      status: 'future',
-      items: [
-        'Computer vision',
-        'Smart irrigation',
-        'Robotics',
-        'Remote sensing',
-        'Precision agriculture',
-      ],
-    },
-  ] satisfies RoadmapStage[],
+  stages: roadmapStages,
   statusLabels: {
     building: 'Building',
     research: 'Research',
@@ -331,8 +311,8 @@ export const vision = {
   lead: 'Every stage below depends on the one before it. The whole reason to start with a map is that nothing further along works without one.',
   pipeline: [
     { id: 'data', label: 'African Agricultural Data', kind: 'input' },
-    { id: 'map', label: 'MIZI Data Map', kind: 'mizi' },
-    { id: 'intelligence', label: 'Data Intelligence', kind: 'mizi' },
+    { id: 'map', label: 'Data Map', kind: 'shaza' },
+    { id: 'intelligence', label: 'Data Intelligence', kind: 'shaza' },
     { id: 'research', label: 'Research', kind: 'downstream' },
     { id: 'ai', label: 'AI / ML', kind: 'downstream' },
     { id: 'climate', label: 'Climate Intelligence', kind: 'downstream' },
@@ -365,22 +345,35 @@ export const principles = {
   ] satisfies Principle[],
 };
 
+export const founder = {
+  eyebrow: 'Why SHAZA',
+  heading: 'A note from the founder',
+  paragraphs: [
+    'I am an African technology enthusiast passionate about using science and technology to solve real problems affecting our continent.',
+    'I started SHAZA from a desire to understand how data, artificial intelligence, and local research can help address Africa’s agricultural and climate challenges, particularly the issues surrounding food security.',
+    'I believe Africa should not only benefit from technological innovation but also play a leading role in building it, grounded in our own realities, knowledge, and needs. Through SHAZA, I hope to contribute to a future where African ideas become meaningful technologies that make a lasting difference.',
+  ],
+  signature: 'Keza Lysa Isimbi, Founder',
+};
+
 export const cta = {
   eyebrow: 'Join us',
-  heading: "Help us map Africa's agricultural intelligence.",
-  lead: "We're starting with Rwanda and building outward.",
+  heading: "Help us map Rwanda's agricultural data.",
+  lead: 'Join the research list for short notes as we test each dataset: what we found, what worked and what is missing. If you hold agricultural data or know where it lives, reply to any note and tell us.',
   primaryCta: { label: 'Join the Research', href: '#signup' },
-  secondaryCta: { label: 'Explore MIZI', href: '#data-map' },
+  secondaryCta: { label: 'Explore the Data Map', href: '#data-map' },
   form: {
     label: 'Enter your email',
     placeholder: 'you@institution.org',
-    submit: 'Join MIZI',
+    submit: 'Join SHAZA',
     note: 'Occasional research notes. No marketing, and you can leave at any time.',
   },
 };
 
 export const footer = {
   tagline: 'Rooted in Africa. Built for the future.',
+  origin:
+    'The name SHAZA comes from a Kirundi cultural expression associated with the beginning of a traditional drumming rhythm.',
   columns: [
     {
       id: 'navigate',
@@ -390,30 +383,22 @@ export const footer = {
         { id: 'data-map', label: 'Data Map', href: '#data-map' },
         { id: 'methodology', label: 'Methodology', href: '#methodology' },
         { id: 'notes', label: 'Research Notes', href: '#signup' },
-        { id: 'about', label: 'About', href: '#what-is-mizi' },
+        { id: 'about', label: 'About', href: '#what-is-shaza' },
+        { id: 'founder', label: 'Founder', href: '#founder' },
       ],
     },
     {
-      id: 'explore',
-      title: 'Explore',
+      id: 'contact',
+      title: 'Contact',
       links: [
-        { id: 'climate', label: 'Climate', href: '#domains' },
-        { id: 'soil', label: 'Soil', href: '#domains' },
-        { id: 'crops', label: 'Crops', href: '#domains' },
-        { id: 'satellite', label: 'Satellite', href: '#domains' },
-        { id: 'markets', label: 'Markets', href: '#domains' },
-        { id: 'research', label: 'Research', href: '#domains' },
-      ],
-    },
-    {
-      id: 'connect',
-      title: 'Connect',
-      links: [
-        { id: 'github', label: 'GitHub', href: '#' },
-        { id: 'linkedin', label: 'LinkedIn', href: '#' },
-        { id: 'contact', label: 'Contact', href: 'mailto:hello@mizilabs.africa' },
+        { id: 'email', label: 'lysaisimbi7@gmail.com', href: 'mailto:lysaisimbi7@gmail.com' },
+        {
+          id: 'linkedin',
+          label: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/keza-lysa-isimbi-97a7b5232/',
+        },
       ],
     },
   ],
-  legal: '© 2026 MIZI Labs',
+  legal: '© 2026 SHAZA',
 };

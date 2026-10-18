@@ -27,7 +27,15 @@
   letter-spacing: var(--tracking-wide);
 }
 
-/* What MIZI Labs is today, stated plainly, on every page view. */
+/* Where the name comes from, in one quiet line. */
+.origin {
+  max-width: 44ch;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* What SHAZA is today, stated plainly, on every page view. */
 .statement {
   color: var(--color-muted);
   font-size: var(--text-sm);
@@ -56,6 +64,7 @@
 }
 
 .link {
+  overflow-wrap: anywhere;
   color: var(--color-muted);
   font-size: var(--text-sm);
   transition: color var(--duration-base) var(--ease-out-soft);
@@ -83,7 +92,7 @@
 
 @media (min-width: 640px) {
   .top {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-7);
   }
 
@@ -94,7 +103,7 @@
 
 @media (min-width: 960px) {
   .top {
-    grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
   }
 
   .brand {

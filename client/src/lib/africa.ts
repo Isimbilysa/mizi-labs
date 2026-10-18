@@ -2,7 +2,7 @@ import { COUNTRIES } from '@/data/countries';
 import type { AfricanCountry, CoverageLevel } from '@/types';
 
 /**
- * Geometry for the MIZI Data Map.
+ * Geometry for the SHAZA Data Map.
  *
  * The continent is described once in geographic coordinates and projected into
  * SVG space here. Everything else — the coastline, the binned data cells, the

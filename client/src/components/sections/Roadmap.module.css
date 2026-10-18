@@ -1,7 +1,5 @@
 .section {
-  background:
-    radial-gradient(70% 50% at 50% 0%, rgba(29, 76, 58, 0.22) 0%, transparent 62%),
-    var(--ink-900);
+  background-color: var(--ink-900);
   border-top: 1px solid var(--color-border);
   overflow: hidden;
 }
@@ -104,7 +102,7 @@
 
 /* --- Vision pipeline ------------------------------------------------------
    The same journey as the stages above, drawn as one line instead of six
-   cards: what goes in, the two parts MIZI is responsible for, and what the
+   cards: what goes in, the two parts SHAZA is responsible for, and what the
    rest of the field can build once they exist. Class names are prefixed
    `flow` so they do not collide with the roadmap's own .stage rules.
    -------------------------------------------------------------------------- */
@@ -203,13 +201,13 @@
   transition: color var(--duration-base) var(--ease-out-soft);
 }
 
-/* The two MIZI stages are the only ones we are responsible for. */
-.flowStage[data-kind='mizi'] .marker {
+/* The two SHAZA stages are the only ones we are responsible for. */
+.flowStage[data-kind='shaza'] .marker {
   border-color: var(--color-gold);
   background-color: var(--color-gold);
 }
 
-.flowStage[data-kind='mizi'] .label {
+.flowStage[data-kind='shaza'] .label {
   color: var(--color-heading);
 }
 

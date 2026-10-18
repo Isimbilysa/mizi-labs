@@ -11,6 +11,7 @@ export function Footer() {
           <div className={styles.brand}>
             <Logo size={38} />
             <p className={styles.tagline}>{footer.tagline}</p>
+            <p className={styles.origin}>{footer.origin}</p>
           </div>
 
           {footer.columns.map((column) => (
@@ -19,7 +20,13 @@ export function Footer() {
               <ul className={styles.linkList}>
                 {column.links.map((link) => (
                   <li key={link.id}>
-                    <a className={styles.link} href={link.href}>
+                    <a
+                      className={styles.link}
+                      href={link.href}
+                      {...(link.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
                       {link.label}
                     </a>
                   </li>

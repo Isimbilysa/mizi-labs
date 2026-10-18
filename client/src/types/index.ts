@@ -1,5 +1,5 @@
 /**
- * Domain model for the MIZI Data Map.
+ * Domain model for the SHAZA Data Map.
  *
  * These types describe the shape of a real agricultural data catalogue. The
  * repository currently fills them with clearly-labelled illustrative values,
@@ -99,7 +99,7 @@ export interface Audience {
 export interface PipelineStage {
   id: string;
   label: string;
-  kind: 'input' | 'mizi' | 'downstream' | 'outcome';
+  kind: 'input' | 'shaza' | 'downstream' | 'outcome';
 }
 
 export interface Principle {

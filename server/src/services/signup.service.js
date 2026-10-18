@@ -23,7 +23,7 @@ async function notify(signup) {
     const response = await fetch(env.signupWebhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: `New MIZI research signup: ${signup.email}`, signup }),
+      body: JSON.stringify({ text: `New SHAZA research signup: ${signup.email}`, signup }),
       signal: AbortSignal.timeout(5000),
     });
     if (!response.ok) {

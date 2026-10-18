@@ -7,32 +7,27 @@
 
 .mark {
   flex: none;
-  color: currentColor;
 }
 
+.terrace {
+  fill: none;
+  stroke: currentColor;
+}
+
+.leaf {
+  fill: none;
+  stroke: currentColor;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 12;
+}
+
+/* Only the seed carries the accent. */
 .seed {
   fill: var(--color-gold);
 }
 
 .wordmark {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  font-family: var(--font-display);
-  line-height: 1;
-}
-
-.name {
-  font-size: 1.06rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.suffix {
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+  display: block;
+  width: auto;
+  height: 0.95rem;
 }

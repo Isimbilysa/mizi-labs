@@ -1,5 +1,5 @@
 /**
- * Thin client for the MIZI Labs API.
+ * Thin client for the SHAZA API.
  *
  * Every response is normalised to its `data` payload or an `ApiError`, so
  * callers never reason about transport. When the Data Map application gains a

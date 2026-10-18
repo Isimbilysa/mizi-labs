@@ -50,7 +50,7 @@ export function Navbar() {
   return (
     <header className={headerClasses}>
       <div className={styles.inner}>
-        <a className={styles.brand} href="#top" aria-label="MIZI Labs — home">
+        <a className={styles.brand} href="#top" aria-label="SHAZA — home">
           <Logo />
         </a>
 

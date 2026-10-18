@@ -2,14 +2,14 @@ import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { DataCoverage } from '@/components/sections/DataCoverage';
 import { DataMap } from '@/components/sections/DataMap';
-import { Domains } from '@/components/sections/Domains';
+import { FounderNote } from '@/components/sections/FounderNote';
 import { Hero } from '@/components/sections/Hero';
 import { JoinCta } from '@/components/sections/JoinCta';
 import { Methodology } from '@/components/sections/Methodology';
 import { Problem } from '@/components/sections/Problem';
 import { Research } from '@/components/sections/Research';
 import { Roadmap } from '@/components/sections/Roadmap';
-import { WhatIsMizi } from '@/components/sections/WhatIsMizi';
+import { WhatIsShaza } from '@/components/sections/WhatIsShaza';
 
 /**
  * The page argues one case, top to bottom: there is a real agricultural data
@@ -38,13 +38,13 @@ export default function App() {
       <main id="main">
         <Hero />
         <Problem />
-        <WhatIsMizi />
+        <WhatIsShaza />
         <DataMap />
-        <Domains />
         <DataCoverage />
-        <Methodology />
         <Research />
+        <Methodology />
         <Roadmap />
+        <FounderNote />
         <JoinCta />
       </main>
 

@@ -5,7 +5,7 @@ import { logger } from './utils/logger.js';
 const app = createApp();
 
 const server = app.listen(env.port, () => {
-  logger.info(`MIZI Labs API listening on http://localhost:${env.port}/api`, {
+  logger.info(`SHAZA API listening on http://localhost:${env.port}/api`, {
     environment: env.nodeEnv,
   });
 });

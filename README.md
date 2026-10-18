@@ -1,8 +1,8 @@
-# MIZI Labs
+# SHAZA
 
 > Rooted in Africa. Built for the future.
 
-Landing page for **MIZI Labs** — a research initiative mapping what agricultural data exists
+Landing page for **SHAZA** — a research initiative mapping what agricultural data exists
 across Africa, who holds it, and where the gaps are. Rwanda first.
 
 Research and prototype stage. The site says so, and the code enforces it.
@@ -85,4 +85,4 @@ Charcoal and ivory, green as an accent rather than a surface. Space Grotesk / In
 Mono, with Instrument Serif italic saved for the few places the page makes a statement. Colour
 is never the only signal, and every animation stops under `prefers-reduced-motion`.
 
-© 2026 MIZI Labs
+© 2026 SHAZA

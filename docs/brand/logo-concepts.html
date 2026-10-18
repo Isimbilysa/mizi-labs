@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHAZA Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a concept sheet. Each concept is one band: idea, three brand surfaces, sizes, in-context use. */
+  :root {
+    --page: #f7f6f2;
+    --text: #15191b;
+    --muted: #5a645f;
+    --rule: rgba(21, 25, 27, 0.14);
+    --chip: rgba(21, 25, 27, 0.06);
+
+    /* Brand surfaces: fixed in both themes, they are what is being judged. */
+    --ink: #0d1012;
+    --ivory: #f4f1ea;
+    --forest: #16382c;
+    --gold: #c9a227;
+    --gold-deep: #806219;
+
+    --font-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #101315; --text: #e9ece9; --muted: #9aa59f;
+      --rule: rgba(233, 236, 233, 0.14); --chip: rgba(233, 236, 233, 0.07);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page: #101315; --text: #e9ece9; --muted: #9aa59f;
+    --rule: rgba(233, 236, 233, 0.14); --chip: rgba(233, 236, 233, 0.07);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-block: 48px 72px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: 64px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1, h2 { margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 600; line-height: 1.05; }
+  h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; line-height: 1.15; }
+  p { margin: 0; max-width: 64ch; }
+  .intro { display: grid; gap: 16px; }
+  .intro p { color: var(--muted); font-size: 18px; }
+
+  .concept { display: grid; gap: 24px; padding-top: 40px; border-top: 1px solid var(--rule); }
+  .concept-head { display: grid; gap: 10px; }
+  .tag {
+    justify-self: start;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--chip);
+  }
+  .tag.pick { background: var(--gold); color: var(--ink); }
+
+  .surfaces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .tile {
+    border-radius: 6px;
+    aspect-ratio: 4 / 3;
+    max-width: 100%;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+  .tile .label {
+    position: absolute; left: 12px; bottom: 10px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; opacity: 0.6;
+  }
+  .on-ink { background: var(--ink); color: var(--ivory); --seed: var(--gold); }
+  .on-ivory { background: var(--ivory); color: var(--ink); --seed: var(--gold-deep); box-shadow: inset 0 0 0 1px rgba(13,16,18,0.08); }
+  .on-forest { background: var(--forest); color: var(--ivory); --seed: var(--ivory); }
+  .tile svg.sym { width: 38%; height: auto; }
+
+  .row { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 12px; }
+  .panel { border-radius: 6px; padding: 28px; display: grid; gap: 18px; align-content: center; min-width: 0; }
+  .lockup { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .lockup .sym { width: 56px; height: 56px; flex: none; }
+  .wm { height: 30px; width: auto; max-width: 100%; }
+  .ladder { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .ladder figure { margin: 0; display: grid; gap: 6px; justify-items: center; }
+  .ladder figcaption { font-family: var(--font-mono); font-size: 11px; opacity: 0.6; }
+
+  .context { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .nav {
+    flex: 1 1 260px; min-width: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px 16px; border-radius: 6px;
+  }
+  .nav .brand { display: flex; align-items: center; gap: 10px; }
+  .nav .brand .sym { width: 24px; height: 24px; }
+  .nav .brand .wm { height: 14px; }
+  .nav .links { font-size: 12px; opacity: 0.65; display: flex; gap: 14px; }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .avatar .sym { width: 36px; height: 36px; }
+  .tab {
+    justify-self: start;
+    display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px;
+    border-radius: 6px 6px 0 0; font-size: 12px; background: rgba(13,16,18,0.06);
+  }
+  .tab .sym { width: 16px; height: 16px; }
+
+  .notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .notes h3 { margin: 0 0 6px; font-size: 13px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .notes ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+
+  .decide { display: grid; gap: 14px; padding: 28px; border-radius: 6px; background: var(--chip); }
+  .decide p { max-width: 70ch; }
+
+  @media (max-width: 760px) {
+    .surfaces { grid-template-columns: minmax(0, 1fr); }
+    .tile { aspect-ratio: 16 / 9; }
+    .tile svg.sym { width: 22%; }
+    .row, .notes { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- CHOSEN · Leaf Terraces: leaf A + terraced hillside, seed at the top. -->
+    <symbol id="lt" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="12">
+        <path d="M15 60 A46 46 0 0 1 32 5 A46 46 0 0 1 49 60" stroke-width="5" />
+        <path d="M13.4 31 Q32 39 50.6 31 M11.8 41 Q32 49 52.2 41 M12.5 51 Q32 59 51.5 51" stroke-width="3.5" />
+      </g>
+      <ellipse cx="32" cy="19" rx="4" ry="6" style="fill: var(--seed)" />
+    </symbol>
+    <symbol id="lt-small" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="12">
+        <path d="M15 60 A46 46 0 0 1 32 5 A46 46 0 0 1 49 60" stroke-width="7" />
+        <path d="M12.3 36 Q32 45 51.7 36 M12.3 50 Q32 59 51.7 50" stroke-width="5" />
+      </g>
+      <ellipse cx="32" cy="20" rx="5" ry="7" style="fill: var(--seed)" />
+    </symbol>
+    <!-- A · Leaf A: the A of SHAZA drawn as a pointed leaf, with a seed where the crossbar would be. -->
+    <symbol id="leaf" viewBox="0 0 64 64">
+      <path d="M15 60 A46 46 0 0 1 32 5 A46 46 0 0 1 49 60" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter" stroke-miterlimit="12" />
+      <ellipse cx="32" cy="41" rx="5" ry="7.5" style="fill: var(--seed)" />
+    </symbol>
+    <symbol id="leaf-small" viewBox="0 0 64 64">
+      <path d="M13 62 A46 46 0 0 1 32 4 A46 46 0 0 1 51 62" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="12" />
+      <ellipse cx="32" cy="42" rx="7" ry="10" style="fill: var(--seed)" />
+    </symbol>
+
+    <!-- Custom wordmark shared by all concepts: S H, leaf A, Z, leaf A. The first A holds the seed. -->
+    <clipPath id="wm-clip"><rect x="0" y="0" width="185" height="46" /></clipPath>
+    <symbol id="wordmark" viewBox="0 0 185 46">
+      <g clip-path="url(#wm-clip)" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="miter" stroke-miterlimit="12">
+        <path d="M21.19 7.26 A10 10 0 1 0 13 23 A10 10 0 1 1 4.81 38.74" />
+        <path d="M38 0 V46 M58 0 V46 M38 23 H58" />
+        <path d="M72 50 A80 80 0 0 1 87 2 A80 80 0 0 1 102 50" />
+        <path d="M113 3 H139 L113 43 H139" />
+        <path d="M150 50 A80 80 0 0 1 165 2 A80 80 0 0 1 180 50" />
+      </g>
+      <ellipse cx="87" cy="33" rx="3.2" ry="5" style="fill: var(--seed)" />
+    </symbol>
+
+    <!-- B · Field: a plot seen from above, rows following the contour of the land. One row is planted first. -->
+    <clipPath id="field-clip"><circle cx="32" cy="32" r="24.5" /></clipPath>
+    <symbol id="field" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="3" />
+      <g clip-path="url(#field-clip)" fill="none" stroke-width="3.2">
+        <circle cx="2" cy="70" r="34" stroke="currentColor" />
+        <circle cx="2" cy="70" r="42" stroke="currentColor" />
+        <circle cx="2" cy="70" r="50" style="stroke: var(--seed)" />
+        <circle cx="2" cy="70" r="58" stroke="currentColor" />
+        <circle cx="2" cy="70" r="66" stroke="currentColor" />
+        <circle cx="2" cy="70" r="74" stroke="currentColor" />
+      </g>
+    </symbol>
+    <clipPath id="field-clip-small"><circle cx="32" cy="32" r="22" /></clipPath>
+    <symbol id="field-small" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="5" />
+      <g clip-path="url(#field-clip-small)" fill="none" stroke-width="5.5">
+        <circle cx="2" cy="70" r="38" stroke="currentColor" />
+        <circle cx="2" cy="70" r="51" style="stroke: var(--seed)" />
+        <circle cx="2" cy="70" r="64" stroke="currentColor" />
+      </g>
+    </symbol>
+
+    <!-- C · Terraces: a hillside seen from above, its terraces stacked into the letter S. -->
+    <symbol id="terrace" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="2.8">
+        <path d="M45.86 14 A16 16 0 1 0 32 38 A4 4 0 1 1 28.54 44" />
+        <path d="M42.39 16 A12 12 0 1 0 32 34 A8 8 0 1 1 25.07 46" />
+        <path d="M38.93 18 A8 8 0 1 0 32 30 A12 12 0 1 1 21.61 48" />
+        <path d="M35.46 20 A4 4 0 1 0 32 26 A16 16 0 1 1 18.14 50" />
+      </g>
+      <ellipse cx="51.5" cy="9" rx="3.2" ry="5" transform="rotate(40 51.5 9)" style="fill: var(--seed)" />
+    </symbol>
+    <symbol id="terrace-small" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="5.5">
+        <path d="M44.12 15 A14 14 0 1 0 32 36 A6 6 0 1 1 26.8 45" />
+        <path d="M37.2 19 A6 6 0 1 0 32 28 A14 14 0 1 1 19.88 49" />
+      </g>
+      <ellipse cx="52" cy="9" rx="4.5" ry="7" transform="rotate(40 52 9)" style="fill: var(--seed)" />
+    </symbol>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <header class="intro">
+    <span class="eyebrow">SHAZA · logo exploration · round 3 · agriculture</span>
+    <h1>Three marks grown from the land</h1>
+    <p>Each concept starts from farming: a leaf, a field, a terraced hillside. Each also works for maps and data, so the brand can grow into climate and geospatial work later. All three share one custom wordmark, where both As are drawn as leaves and the first one holds a seed.</p>
+  </header>
+
+  <section class="concept" aria-labelledby="chosen-title">
+    <div class="concept-head">
+      <span class="tag pick">Chosen · C + A wordmark</span>
+      <h2 id="chosen-title">Terraces with leaf A</h2>
+      <p>The Terraces symbol from concept C, paired with the custom wordmark whose As are drawn as leaves. The symbol carries the land and the map; the leaf As carry growth inside the name itself. This is now the logo on the website.</p>
+    </div>
+    <div class="surfaces">
+      <div class="tile on-ink"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces on ink"><use href="#terrace" /></svg><span class="label">INK</span></div>
+      <div class="tile on-ivory"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces on ivory"><use href="#terrace" /></svg><span class="label">IVORY</span></div>
+      <div class="tile on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces, one colour, on forest"><use href="#terrace" /></svg><span class="label">FOREST · ONE COLOUR</span></div>
+    </div>
+    <div class="row">
+      <div class="panel on-ink">
+        <div class="lockup">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace" /></svg>
+          <svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg>
+        </div>
+        <div class="context">
+          <div class="nav on-ivory">
+            <span class="brand"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace-small" /></svg><svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg></span>
+            <span class="links"><span>Research</span><span>Data Map</span></span>
+          </div>
+          <div class="avatar on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="GitHub avatar"><use href="#terrace" /></svg></div>
+        </div>
+      </div>
+      <div class="panel on-ivory">
+        <div class="ladder">
+          <figure><svg width="64" height="64" viewBox="0 0 64 64"><use href="#terrace" /></svg><figcaption>64px</figcaption></figure>
+          <figure><svg width="32" height="32" viewBox="0 0 64 64"><use href="#terrace" /></svg><figcaption>32px</figcaption></figure>
+          <figure><svg width="24" height="24" viewBox="0 0 64 64"><use href="#terrace-small" /></svg><figcaption>24px</figcaption></figure>
+          <figure><svg width="16" height="16" viewBox="0 0 64 64"><use href="#terrace-small" /></svg><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="tab"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace-small" /></svg>SHAZA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== A ============================== -->
+  <section class="concept" aria-labelledby="a-title">
+    <div class="concept-head">
+      <span class="tag pick">A · My pick</span>
+      <h2 id="a-title">Leaf A</h2>
+      <p>The A of SHAZA becomes a pointed leaf, and the crossbar becomes a seed. One shape says three things at once: a letter of the name, a young leaf, and an arrow pointing up.</p>
+    </div>
+
+    <div class="surfaces">
+      <div class="tile on-ink"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Leaf A on ink"><use href="#leaf" /></svg><span class="label">INK</span></div>
+      <div class="tile on-ivory"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Leaf A on ivory"><use href="#leaf" /></svg><span class="label">IVORY</span></div>
+      <div class="tile on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Leaf A, one colour, on forest"><use href="#leaf" /></svg><span class="label">FOREST · ONE COLOUR</span></div>
+    </div>
+
+    <div class="row">
+      <div class="panel on-ink">
+        <div class="lockup">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#leaf" /></svg>
+          <svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg>
+        </div>
+        <div class="context">
+          <div class="nav on-ivory">
+            <span class="brand"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#leaf-small" /></svg><svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg></span>
+            <span class="links"><span>Research</span><span>Data Map</span></span>
+          </div>
+          <div class="avatar on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="GitHub avatar"><use href="#leaf" /></svg></div>
+        </div>
+      </div>
+      <div class="panel on-ivory">
+        <div class="ladder">
+          <figure><svg width="64" height="64" viewBox="0 0 64 64"><use href="#leaf" /></svg><figcaption>64px</figcaption></figure>
+          <figure><svg width="32" height="32" viewBox="0 0 64 64"><use href="#leaf" /></svg><figcaption>32px</figcaption></figure>
+          <figure><svg width="24" height="24" viewBox="0 0 64 64"><use href="#leaf-small" /></svg><figcaption>24px</figcaption></figure>
+          <figure><svg width="16" height="16" viewBox="0 0 64 64"><use href="#leaf-small" /></svg><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="tab"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#leaf-small" /></svg>SHAZA</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div><h3>Why it works</h3><ul>
+        <li>The symbol and the wordmark are the same shape, so they feel like one system.</li>
+        <li>It is the simplest of the three. It stays clear at 16px and is easy to engrave, stitch or stamp.</li>
+        <li>A leaf on its own is a common farming icon. A leaf that is also a letter with a seed inside is not.</li>
+      </ul></div>
+      <div><h3>Watch out for</h3><ul>
+        <li>It says "growth" more than "data". The data side has to come from the typography and the website.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============================== B ============================== -->
+  <section class="concept" aria-labelledby="b-title">
+    <div class="concept-head">
+      <span class="tag">B</span>
+      <h2 id="b-title">Field</h2>
+      <p>A farm plot seen from above, the way a satellite sees it. The crop rows curve with the shape of the land, and one row, in gold, is planted first. The circle also reads as a globe.</p>
+    </div>
+
+    <div class="surfaces">
+      <div class="tile on-ink"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Field on ink"><use href="#field" /></svg><span class="label">INK</span></div>
+      <div class="tile on-ivory"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Field on ivory"><use href="#field" /></svg><span class="label">IVORY</span></div>
+      <div class="tile on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Field, one colour, on forest"><use href="#field" /></svg><span class="label">FOREST · ONE COLOUR</span></div>
+    </div>
+
+    <div class="row">
+      <div class="panel on-ink">
+        <div class="lockup">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#field" /></svg>
+          <svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg>
+        </div>
+        <div class="context">
+          <div class="nav on-ivory">
+            <span class="brand"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#field-small" /></svg><svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg></span>
+            <span class="links"><span>Research</span><span>Data Map</span></span>
+          </div>
+          <div class="avatar on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="GitHub avatar"><use href="#field" /></svg></div>
+        </div>
+      </div>
+      <div class="panel on-ivory">
+        <div class="ladder">
+          <figure><svg width="64" height="64" viewBox="0 0 64 64"><use href="#field" /></svg><figcaption>64px</figcaption></figure>
+          <figure><svg width="32" height="32" viewBox="0 0 64 64"><use href="#field" /></svg><figcaption>32px</figcaption></figure>
+          <figure><svg width="24" height="24" viewBox="0 0 64 64"><use href="#field-small" /></svg><figcaption>24px</figcaption></figure>
+          <figure><svg width="16" height="16" viewBox="0 0 64 64"><use href="#field-small" /></svg><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="tab"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#field-small" /></svg>SHAZA</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div><h3>Why it works</h3><ul>
+        <li>The strongest link to what SHAZA actually does: looking at land through data and maps.</li>
+        <li>It stretches naturally to climate and earth observation later.</li>
+      </ul></div>
+      <div><h3>Watch out for</h3><ul>
+        <li>It has no link to the letters of the name, so people learn it more slowly.</li>
+        <li>The rows need care to stay crisp at very small sizes. The small version uses fewer, thicker rows.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============================== C ============================== -->
+  <section class="concept" aria-labelledby="c-title">
+    <div class="concept-head">
+      <span class="tag">C</span>
+      <h2 id="c-title">Terraces</h2>
+      <p>The hills of Rwanda and Burundi are farmed in terraces that follow the curve of the slope. Seen from above, they look like contour lines on a map. Here four terraces bend into the letter S, with a seed at the top of the hill.</p>
+    </div>
+
+    <div class="surfaces">
+      <div class="tile on-ink"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces on ink"><use href="#terrace" /></svg><span class="label">INK</span></div>
+      <div class="tile on-ivory"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces on ivory"><use href="#terrace" /></svg><span class="label">IVORY</span></div>
+      <div class="tile on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="Terraces, one colour, on forest"><use href="#terrace" /></svg><span class="label">FOREST · ONE COLOUR</span></div>
+    </div>
+
+    <div class="row">
+      <div class="panel on-ink">
+        <div class="lockup">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace" /></svg>
+          <svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg>
+        </div>
+        <div class="context">
+          <div class="nav on-ivory">
+            <span class="brand"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace-small" /></svg><svg class="wm" viewBox="0 0 185 46" role="img" aria-label="SHAZA"><use href="#wordmark" /></svg></span>
+            <span class="links"><span>Research</span><span>Data Map</span></span>
+          </div>
+          <div class="avatar on-forest"><svg class="sym" viewBox="0 0 64 64" role="img" aria-label="GitHub avatar"><use href="#terrace" /></svg></div>
+        </div>
+      </div>
+      <div class="panel on-ivory">
+        <div class="ladder">
+          <figure><svg width="64" height="64" viewBox="0 0 64 64"><use href="#terrace" /></svg><figcaption>64px</figcaption></figure>
+          <figure><svg width="32" height="32" viewBox="0 0 64 64"><use href="#terrace" /></svg><figcaption>32px</figcaption></figure>
+          <figure><svg width="24" height="24" viewBox="0 0 64 64"><use href="#terrace-small" /></svg><figcaption>24px</figcaption></figure>
+          <figure><svg width="16" height="16" viewBox="0 0 64 64"><use href="#terrace-small" /></svg><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="tab"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true"><use href="#terrace-small" /></svg>SHAZA</div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div><h3>Why it works</h3><ul>
+        <li>The most local of the three: terraced hills are part of the real landscape SHAZA starts in.</li>
+        <li>Contour lines are a map convention, so it also says "geospatial data".</li>
+      </ul></div>
+      <div><h3>Watch out for</h3><ul>
+        <li>Four lines blur below 24px. The small version uses two.</li>
+        <li>Without the explanation, some people may see stripes rather than terraces.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="decide" aria-labelledby="d-title">
+    <span class="eyebrow">Next step</span>
+    <h2 id="d-title">Pick one, or mix them</h2>
+    <p>I recommend <strong>A, Leaf A</strong>: it is the simplest, it stays clear at every size, and the symbol is a letter of the name. If you want the data and map side to show more, <strong>B, Field</strong> is the strongest alternative. Every concept uses the same leaf wordmark, so you can mix any symbol with it.</p>
+  </section>
+</main>
+</html>

@@ -9,7 +9,7 @@ apiRouter.get('/', (_req, res) => {
   res.json({
     ok: true,
     data: {
-      name: 'MIZI Labs API',
+      name: 'SHAZA API',
       version: 1,
       endpoints: ['GET /api/health', 'POST /api/signups'],
       note: 'The Data Map catalogue endpoints will live here once the inventory exists.',

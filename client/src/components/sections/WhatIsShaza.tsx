@@ -3,33 +3,33 @@ import { Section } from '@/components/layout/Section';
 import { DomainIcon } from '@/components/ui/Icons';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { principles, whatIsMizi } from '@/data/site';
-import styles from './WhatIsMizi.module.css';
+import { principles, whatIsShaza } from '@/data/site';
+import styles from './WhatIsShaza.module.css';
 
 /**
- * What MIZI is: three pillars, then the principles they rest on. The
+ * What SHAZA is: three pillars, then the principles they rest on. The
  * principles used to be their own section, but they only mean anything as a
  * qualifier on the work described directly above them.
  */
-export function WhatIsMizi() {
+export function WhatIsShaza() {
   return (
     <Section
-      id="what-is-mizi"
+      id="what-is-shaza"
       tone="light"
-      labelledBy="what-is-mizi-title"
+      labelledBy="what-is-shaza-title"
       className={styles.section}
     >
       <Container>
         <SectionHeading
-          eyebrow={whatIsMizi.eyebrow}
-          title={whatIsMizi.heading}
-          lead={whatIsMizi.lead}
-          titleId="what-is-mizi-title"
+          eyebrow={whatIsShaza.eyebrow}
+          title={whatIsShaza.heading}
+          lead={whatIsShaza.lead}
+          titleId="what-is-shaza-title"
           size="lg"
         />
 
         <ol className={styles.pillars}>
-          {whatIsMizi.pillars.map((pillar, index) => (
+          {whatIsShaza.pillars.map((pillar, index) => (
             <Reveal key={pillar.id} delay={index * 100} asChild>
               <li className={styles.pillar}>
                 <div className={styles.pillarHead}>

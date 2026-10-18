@@ -1,8 +1,8 @@
 {
-  "name": "mizi-labs",
+  "name": "shaza",
   "version": "1.0.0",
   "private": true,
-  "description": "MIZI Labs — Intelligence for Africa's food future. Marketing site (React) + API (Node/Express).",
+  "description": "SHAZA — Intelligence for Africa's food future. Marketing site (React) + API (Node/Express).",
   "type": "module",
   "workspaces": [
     "client",

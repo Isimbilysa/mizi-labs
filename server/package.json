@@ -1,8 +1,8 @@
 {
-  "name": "@mizi/server",
+  "name": "@shaza/server",
   "version": "1.0.0",
   "private": true,
-  "description": "MIZI Labs API — contact intake, health and site metadata endpoints.",
+  "description": "SHAZA API — contact intake, health and site metadata endpoints.",
   "type": "module",
   "main": "src/index.js",
   "engines": {

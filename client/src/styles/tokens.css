@@ -1,5 +1,5 @@
 /* =============================================================================
-   MIZI Labs — design tokens
+   SHAZA — design tokens
    Raw palette first, then semantic tokens. Components only ever reference the
    semantic layer, so a surface can flip from ivory to forest without touching
    a single component stylesheet.
@@ -25,7 +25,7 @@
   --sage-400: #7fa894;
   --sage-300: #a6c0b1;
 
-  --gold-600: #a8842f;
+  --gold-600: #806219;
   --gold-500: #c9a227;
   --gold-400: #dcbb5c;
   --sand-200: #e2d6bd;
@@ -40,11 +40,11 @@
   --ivory-400: #b5aea1;
 
   /* --- Typography --------------------------------------------------------- */
-  --font-display: 'Space Grotesk', 'Inter', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SFMono-Regular', ui-monospace, monospace;
   /* Reserved for pull-quote statements. Never for headings or UI. */
-  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-serif: 'IBM Plex Serif', 'Iowan Old Style', Georgia, serif;
 
   --text-2xs: 0.6875rem;
   --text-xs: 0.75rem;
@@ -82,8 +82,8 @@
   --space-10: 5rem;
   --space-11: 6.5rem;
 
-  --container: 1180px;
-  --container-wide: 1360px;
+  --container: 1320px;
+  --container-wide: 1600px;
   --container-narrow: 780px;
   --gutter: clamp(1.25rem, 4vw, 2.75rem);
   --section-py: clamp(5rem, 8.5vw, 9.5rem);

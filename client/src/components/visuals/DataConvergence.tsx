@@ -37,7 +37,7 @@ export function DataConvergence({ sources, className = '' }: DataConvergenceProp
         preserveAspectRatio="xMidYMid meet"
       >
         <title id={`${uid}-title`}>
-          {`Eight separate agricultural data sources — ${sources.join(', ')} — converging into MIZI.`}
+          {`Eight separate agricultural data sources — ${sources.join(', ')} — converging into SHAZA.`}
         </title>
 
         <defs>
@@ -69,7 +69,7 @@ export function DataConvergence({ sources, className = '' }: DataConvergenceProp
           <circle className={styles.halo} cx={NODE.x} cy={NODE.y} r={NODE.r + 12} />
           <circle className={styles.node} cx={NODE.x} cy={NODE.y} r={NODE.r} />
           <text className={styles.nodeLabel} x={NODE.x} y={NODE.y + 5} textAnchor="middle">
-            MIZI
+            SHAZA
           </text>
         </g>
       </svg>
